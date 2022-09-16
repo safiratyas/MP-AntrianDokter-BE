@@ -24,7 +24,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       genderId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'genders',
+          },
+          key: 'id',
+        },
       },
       image: {
         type: Sequelize.STRING
