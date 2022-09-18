@@ -6,6 +6,7 @@
   "author": "Safira Tyas Wandita <safeeratyas@gmail.com> & Siti Haryati <19560008@jayakarta.ac.id>",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
