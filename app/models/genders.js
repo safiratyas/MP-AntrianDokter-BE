@@ -5,7 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Genders extends Model {
     static associate(models) {
-      this.hasMany(models.Users, {
+      this.hasMany(models.Patients, {
+        foreignKey: 'genderId',
+        as: 'gender',
+      });
+      this.hasMany(models.Admins, {
         foreignKey: 'genderId',
         as: 'gender',
       });
