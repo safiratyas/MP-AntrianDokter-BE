@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Project Management for ticketing in hospital",
   "main": "index.js",
+  "scripts": {
+    "start": "node bin/www",
+    "dev": "nodemon -q bin/www"
+  },
   "author": "Safira Tyas Wandita <safeeratyas@gmail.com> & Siti Haryati <19560008@jayakarta.ac.id>",
   "license": "MIT",
   "dependencies": {
