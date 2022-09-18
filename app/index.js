@@ -14,6 +14,6 @@ if (!nodeEnv || nodeEnv !== "production") {
 
 app.use(cors());
 app.use(express.json());
-app.use(router);
+// app.use(router);
 
 module.exports = app;
