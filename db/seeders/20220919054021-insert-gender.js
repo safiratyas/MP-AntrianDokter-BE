@@ -6,8 +6,8 @@ module.exports = {
 
     const insertGenders = genders.map((gender) => ({
       name: gender,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      created_at: new Date(),
+      updated_at: new Date(),
     }));
 
     await queryInterface.bulkInsert('genders', insertGenders, {});

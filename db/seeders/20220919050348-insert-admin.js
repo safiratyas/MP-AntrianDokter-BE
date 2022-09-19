@@ -30,8 +30,8 @@ module.exports = {
         image: `https://randomuser.me/api/portraits/lego/${rand}.jpg`,
         phoneNumber: `08${Math.random().toString().substring(5, 15)}`,
         genderId: genders[1],
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       });
     });
 
