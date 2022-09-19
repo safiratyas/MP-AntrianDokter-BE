@@ -1,5 +1,8 @@
 'use strict';
 
+const { Op } = require("sequelize");
+const bcrypt = require("bcryptjs");
+
 const names = [
   'Magthilda Saoda',
   'Safia Sukma Adila',
