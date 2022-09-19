@@ -1,5 +1,7 @@
 'use strict';
 
+const { Op } = require("sequelize");
+
 const names = [
   'Abdul Hafiz',
   'Devara Gandanny Shoeria',
@@ -9,40 +11,40 @@ const names = [
   'Muhammad Aditya'
 ];
 
-function getRandSpecialist() {
-  const specialists = [
-    'Dokter Umum',
-    'Dokter Gigi',
-    'Dokter Kandungan & Kebidanan',
-  ];
-  const getSpecialist = specialists[Math.floor(Math.random() * specialists.length)];
+// function getRandSpecialist() {
+//   const specialists = [
+//     'Dokter Umum',
+//     'Dokter Gigi',
+//     'Dokter Kandungan & Kebidanan',
+//   ];
+//   const getSpecialist = specialists[Math.floor(Math.random() * specialists.length)];
 
-  const find = data.find((element) =>
-    element.specialist === getSpecialist
-  );
+//   const find = data.find((element) =>
+//     element.specialist === getSpecialist
+//   );
 
-  return find;
-}
+//   return find;
+// }
 
 module.exports = {
   async up(queryInterface, Sequelize) {
     const doctors = names.map((name) => {
-      const randSpecialist = getRandSpecialist();
+      // const randSpecialist = getRandSpecialist();
       return ({
         name,
-        specialists: getRandSpecialist.specialist,
+        specialists,
         created_at: new Date(),
         updated_at: new Date(),
       })
     })
+    await queryInterface.bulkInsert('doctors', doctors, {});
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('doctors', {
+      name: {
+        [Op.in]: names
+      }
+    }, {});
   }
 };
