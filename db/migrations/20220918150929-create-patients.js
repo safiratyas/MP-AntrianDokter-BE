@@ -25,12 +25,12 @@ module.exports = {
       },
       genderId: {
         type: Sequelize.INTEGER,
-        // references: {
-        //   model: {
-        //     tableName: "genders",
-        //   },
-        //   key: "id",
-        // },
+        references: {
+          model: {
+            tableName: "genders",
+          },
+          key: "id",
+        },
       },
       image: {
         type: Sequelize.STRING
