@@ -2,7 +2,7 @@ module.exports = {
   getRoot(req, res) {
     res.status(200).json({
       status: 'OK',
-      message: 'MEDIAQ API is up and running!'
+      message: 'MEDIQ API is up and running!'
     })
   },
 
