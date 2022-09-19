@@ -30,19 +30,19 @@ module.exports = {
       const randSpecialist = getRandSpecialist();
       return ({
         name,
-        specialists: getRandSpecialist.specialist,
+        specialists: randSpecialist.specialist,
         created_at: new Date(),
         updated_at: new Date(),
       })
     })
+    await queryInterface.bulkInsert('doctors', doctors, {});
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('doctors', {
+      name: {
+        [Op.in]: names
+      }
+    }, {});
   }
 };

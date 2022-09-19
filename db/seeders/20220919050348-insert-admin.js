@@ -8,11 +8,6 @@ const names = [
   'Zalsabila Tsania Widiatno'
 ];
 
-const genders = [
-  'Male',
-  'Female'
-];
-
 module.exports = {
   async up (queryInterface, Sequelize) {
     const password = '12345678';
@@ -29,7 +24,7 @@ module.exports = {
         encryptedPassword,
         image: `https://randomuser.me/api/portraits/lego/${rand}.jpg`,
         phoneNumber: `08${Math.random().toString().substring(5, 15)}`,
-        genderId: genders[1],
+        genderId: 2,
         created_at: new Date(),
         updated_at: new Date(),
       });
