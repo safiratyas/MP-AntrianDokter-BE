@@ -10,12 +10,12 @@ module.exports = {
       },
       patientId: {
         type: Sequelize.INTEGER,
-        // references: {
-        //   model: {
-        //     tableName: "patients",
-        //   },
-        //   key: "id",
-        // },
+        references: {
+          model: {
+            tableName: "patients",
+          },
+          key: "id",
+        },
       },
       examinationId: {
         type: Sequelize.INTEGER,
