@@ -7,9 +7,7 @@ const apiRouter = express.Router();
 // const swaggerUI = require('swagger-ui-express');
 // const swaggerDocument = require('../config/swagger.json');
 
-
 apiRouter.get("/", controllers.api.application.getRoot);
-
 
 /**
  * @Authentication Resources 
