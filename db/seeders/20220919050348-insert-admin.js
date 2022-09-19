@@ -1,16 +1,14 @@
 'use strict';
 
+const { Op } = require("sequelize");
+const bcrypt = require("bcryptjs");
+
 const names = [
   'Magthilda Saoda',
   'Safia Sukma Adila',
   'Safira Tyas Wandita',
   'Siti Haryati',
   'Zalsabila Tsania Widiatno'
-];
-
-const genders = [
-  'Male',
-  'Female'
 ];
 
 module.exports = {
@@ -29,7 +27,7 @@ module.exports = {
         encryptedPassword,
         image: `https://randomuser.me/api/portraits/lego/${rand}.jpg`,
         phoneNumber: `08${Math.random().toString().substring(5, 15)}`,
-        genderId: genders[1],
+        genderId: 2,
         created_at: new Date(),
         updated_at: new Date(),
       });
