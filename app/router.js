@@ -1,10 +1,9 @@
 const express = require("express");
 const controllers = require("./controllers");
 const middlewares = require("./middlewares");
-// const uploadOnMemory = require("../config/uploadOnMemory");
 const apiRouter = express.Router();
 
-// // configure and initialization swagger
+// configure and initialization swagger
 // const swaggerUI = require('swagger-ui-express');
 // const swaggerDocument = require('../config/swagger.json');
 
