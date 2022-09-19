@@ -24,9 +24,9 @@ module.exports = {
       return({
         name,
         email: `${emailBuild.toLowerCase()}@gmail.com`,
-        encryptedPassword,
+        password: encryptedPassword,
         image: `https://randomuser.me/api/portraits/lego/${rand}.jpg`,
-        phoneNumber: `08${Math.random().toString().substring(5, 15)}`,
+        phoneNumber: `08${Math.random().toString().substring(5, 10)}`,
         genderId: 2,
         created_at: new Date(),
         updated_at: new Date(),
