@@ -5,14 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Genders extends Model {
     static associate(models) {
-      this.hasMany(models.Patients, {
-        foreignKey: 'genderId',
-        as: 'gender',
-      });
-      this.hasMany(models.Admins, {
-        foreignKey: 'genderId',
-        as: 'gender',
-      });
+      // define association here
     }
   }
   Genders.init({
@@ -20,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Genders',
-    underscored: true,
   });
   return Genders;
 };

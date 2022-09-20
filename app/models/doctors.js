@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Doctors extends Model {
     static associate(models) {
-      this.belongsTo(models.Queues, {
+      this.hasMany(models.Queues, {
         foreignKey: 'doctorId',
         as: 'doctor',
       });
@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Doctors',
-    underscored: true,
   });
   return Doctors;
 };

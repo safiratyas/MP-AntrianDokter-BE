@@ -1,6 +1,10 @@
 const { Admins } = require("../models");
 
 module.exports = {
+  create(inputData) {
+    return Admins.create(inputData);
+  },
+
 	find(id) {
 		return Admins.findByPk(id);
 	},

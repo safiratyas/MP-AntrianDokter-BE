@@ -1,38 +1,37 @@
-const patientRepository = require("../repositories/patients");
+const patientsRepository = require('../repositories/patients');
 
 module.exports = {
-	create(requestBody) {
-		return patientRepository.create(requestBody);
-	},
+  create(requestBody) {
+    return patientsRepository.create(requestBody);
+  },
 
-	update(id, requestBody) {
-		return patientRepository.update(id, requestBody);
-	},
+  update(id, requestBody) {
+    return patientsRepository.update(id, requestBody);
+  },
 
-	delete(id) {
-		return patientRepository.delete(id);
-	},
+  delete(id) {
+    return patientsRepository.delete(id);
+  },
 
-	async listByCondition(condition) {
-		// eslint-disable-next-line no-useless-catch
-		try {
-			const patients = await patientRepository.findAll(condition);
-			const patientsCount = await patientRepository.getTotalPatients();
+  async listByCondition(condition) {
+    try {
+      const patients = await patientsRepository.findAll(condition);
+      const patientsCount = await patientsRepository.getTotalPatients();
 
-			return {
-				data: patients,
-				count: patientsCount,
-			};
-		} catch (err) {
-			throw err;
-		}
-	},
+      return {
+        data: patients,
+        count: patientsCount,
+      };
+    } catch (err) {
+      throw err;
+    }
+  },
 
-	get(id) {
-		return patientRepository.find(id);
-	},
+  get(id) {
+    return patientsRepository.find(id);
+  },
 
-	getOne(key) {
-		return patientRepository.findOne(key);
-	},
+  getOne(key) {
+    return patientsRepository.findOne(key);
+  },
 };
