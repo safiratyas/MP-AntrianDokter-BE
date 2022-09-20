@@ -100,6 +100,17 @@ module.exports = {
         gender
       } = req.body;
 
+      const id = req.params.id;
+      const compareId = id.toString() === req.admin.id.toString();
+
+      if (!compareId) {
+        res.status(401).json({
+          status: 'Failed',
+          message: 'Admin who can edit or delete admin data is him/herself.'
+        });
+        return;
+      }
+
       const update = await adminServices.update(req.params.id, {
         name,
         image,

@@ -19,12 +19,12 @@ apiRouter.post("/api/admins/login",
 );
 
 apiRouter.get("/api/admins/who-am-i",
-  middlewares.authorization.authorize,
+  middlewares.adminAuthorization.authorize,
   controllers.api.admins.whoAmI
 );
 
 apiRouter.put("/api/admins/:id/detail",
-  middlewares.authorization.authorize,
+  middlewares.adminAuthorization.authorize,
   controllers.api.admins.updateDetail
 );
 
@@ -33,7 +33,7 @@ apiRouter.get("/api/admins/:id",
 );
 
 apiRouter.get("/api/admins",
-  middlewares.authorization.authorize,
+  middlewares.adminAuthorization.authorize,
   controllers.api.admins.getAllAdmins
 );
 
@@ -51,12 +51,12 @@ apiRouter.post("/api/patients/login",
 );
 
 apiRouter.get("/api/patients/who-am-i",
-  middlewares.authorization.authorize,
+  middlewares.patientAuthorization.authorize,
   controllers.api.patients.whoAmI
 );
 
 apiRouter.put("/api/patients/:id/detail",
-  middlewares.authorization.authorize,
+  middlewares.patientAuthorization.authorize,
   controllers.api.patients.updateDetail
 );
 
@@ -65,7 +65,7 @@ apiRouter.get("/api/patients/:id",
 );
 
 apiRouter.get("/api/patients",
-  middlewares.authorization.authorize,
+  middlewares.patientAuthorization.authorize,
   controllers.api.patients.getAllPatients
 );
 

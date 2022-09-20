@@ -1,6 +1,4 @@
 const patientServices = require('../../services/patients');
-const { Genders } = require('../../models');
-
 const {
   checkPassword,
   createToken,
@@ -113,16 +111,16 @@ module.exports = {
         phoneNumber
       } = req.body;
 
-      // const id = req.params.id;
-      // const compareId = id.toString() === req.patient.id.toString();
+      const id = req.params.id;
+      const compareId = id.toString() === req.patient.id.toString();
 
-      // if (!compareId) {
-      //   res.status(401).json({
-      //     status: 'Failed',
-      //     message: 'Patient who can edit or delete patient data is him/herself.'
-      //   });
-      //   return;
-      // }
+      if (!compareId) {
+        res.status(401).json({
+          status: 'Failed',
+          message: 'Patient who can edit or delete patient data is him/herself.'
+        });
+        return;
+      }
 
       const update = await patientServices.update(req.params.id, {
         name,
