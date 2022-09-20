@@ -31,10 +31,15 @@ apiRouter.post("/api/patients/login",
  controllers.api.patients.login
 );
 
-// apiRouter.get("/api/who-am-i",
-//   middlewares.authorization.authorize,
-//   controllers.api.authentication.whoAmI,
-// );
+apiRouter.get("/api/patients/who-am-i",
+  middlewares.authorization.authorize,
+  controllers.api.patients.whoAmI
+);
+
+apiRouter.put("/api/patients/:id/detail",
+  middlewares.authorization.authorize,
+  controllers.api.patients.updateDetail
+);
 
 // apiRouter.get("/api/patient/:id",
 //   controllers.api.authentication.getPatient,
@@ -43,11 +48,6 @@ apiRouter.post("/api/patients/login",
 // apiRouter.get("/api/patient",
 //   middlewares.authorization.authorize,
 //   controllers.api.authentication.getAllPatient,
-// );
-
-// apiRouter.put("/api/patient/:id/detail",
-//   middlewares.authorization.authorize,
-//   controllers.api.authentication.updateDetail,
 // );
 
 apiRouter.use(controllers.api.application.handleNotFound);

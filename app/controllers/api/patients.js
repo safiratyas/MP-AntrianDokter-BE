@@ -22,7 +22,6 @@ module.exports = {
         gender: req.body.gender,
         image: null,
         NIK: req.body.NIK,
-        BPJS: req.body.BPJS,
         phoneNumber: req.body.phoneNumber,
       });
 
@@ -35,7 +34,6 @@ module.exports = {
         gender: patient.gender,
         image: patient.image,
         NIK: patient.NIK,
-        BPJS: patient.BPJS,
         phoneNumber: patient.phoneNumber,
         createdAt: patient.createdAt,
         updatedAt: patient.updatedAt
@@ -100,4 +98,56 @@ module.exports = {
       });
     }
   },
+
+  async updateDetail(req, res) {
+    console.log(req.patient);
+    try {
+      const {
+        name,
+        dateOfBirth,
+        address,
+        gender,
+        image,
+        NIK,
+        BPJS,
+        phoneNumber
+      } = req.body;
+
+      const id = req.params.id;
+      const compareId = id.toString() === req.patient.id.toString();
+
+      if (!compareId) {
+        res.status(401).json({
+          status: 'Failed',
+          message: 'Patient who can edit or delete patient data is him/herself.'
+        });
+        return;
+      }
+
+      const update = await patientServices.update(req.params.id, {
+        name,
+        dateOfBirth,
+        address,
+        gender,
+        image,
+        NIK,
+        BPJS,
+        phoneNumber,
+      });
+
+      res.status(200).json({
+        status: 'OK',
+        message: `Patient with id ${req.params.id} has been updated.`,
+      });
+    } catch (err) {
+      res.status(422).json({
+        status: 'Failed',
+        message: err.message,
+      });
+    }
+  }, 
+
+  async whoAmI(req, res) {
+    res.status(200).json(req.patient);
+  }
 }
