@@ -41,14 +41,14 @@ apiRouter.put("/api/patients/:id/detail",
   controllers.api.patients.updateDetail
 );
 
-// apiRouter.get("/api/patient/:id",
-//   controllers.api.authentication.getPatient,
-// );
+apiRouter.get("/api/patients/:id",
+  controllers.api.patients.getPatient
+);
 
-// apiRouter.get("/api/patient",
-//   middlewares.authorization.authorize,
-//   controllers.api.authentication.getAllPatient,
-// );
+apiRouter.get("/api/patients",
+  middlewares.authorization.authorize,
+  controllers.api.patients.getAllPatients
+);
 
 apiRouter.use(controllers.api.application.handleNotFound);
 

@@ -113,16 +113,16 @@ module.exports = {
         phoneNumber
       } = req.body;
 
-      const id = req.params.id;
-      const compareId = id.toString() === req.patient.id.toString();
+      // const id = req.params.id;
+      // const compareId = id.toString() === req.patient.id.toString();
 
-      if (!compareId) {
-        res.status(401).json({
-          status: 'Failed',
-          message: 'Patient who can edit or delete patient data is him/herself.'
-        });
-        return;
-      }
+      // if (!compareId) {
+      //   res.status(401).json({
+      //     status: 'Failed',
+      //     message: 'Patient who can edit or delete patient data is him/herself.'
+      //   });
+      //   return;
+      // }
 
       const update = await patientServices.update(req.params.id, {
         name,
@@ -149,5 +149,42 @@ module.exports = {
 
   async whoAmI(req, res) {
     res.status(200).json(req.patient);
-  }
-}
+  },
+
+  async getPatient(req, res) {
+    try {
+      const patient = await patientServices.getOne({
+        where: {
+          id: req.params.id
+        },
+        attributes: {
+          exclude: ['password']
+        }
+      });
+
+      if (!patient) {
+        throw new Error(`Patient with id ${req.params.id} not found!`);
+      }
+
+      res.status(200).json(patient);
+    } catch (err) {
+      res.status(404).json({
+        status: 'Failed',
+        message: err.message,
+      });
+    }
+  },
+
+  async getAllPatients(req, res) {
+    const getAll = await patientServices.listByCondition({
+      attributes: {
+        exclude: ['password']
+      }
+    });
+
+    res.status(200).json({
+      status: 'Success',
+      data: getAll
+    });
+  },
+};
