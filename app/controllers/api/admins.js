@@ -15,18 +15,21 @@ module.exports = {
         name: req.body.name,
         email: req.body.email.toLowerCase(),
         password: encryptedPassword,
-        genderId: req.body.genderId,
+        gender: req.body.gender,
         image: null,
-        phoneNumber: req.body.phoneNumber
+        phoneNumber: req.body.phoneNumber,
       });
 
       res.status(201).json({
         id: admin.id,
         name: admin.name,
         email: admin.email,
+        gender: admin.gender,
+        image: admin.image,
+        phoneNumber: admin.phoneNumber,
         createdAt: admin.createdAt,
         updatedAt: admin.updatedAt
-      })
+      });
     } catch (err) {
       res.status(400).json({
         status: 'Failed',
@@ -40,13 +43,13 @@ module.exports = {
       const email = req.body.email.toLowerCase();
       const password = req.body.password;
 
-      const patient = await patientServices.getOne({
+      const admin = await adminServices.getOne({
         where: {
           email
         },
       });
 
-      if (!patient) {
+      if (!admin) {
         res.status(404).json({
           status: "Failed",
           message: "Email not found!"
@@ -54,7 +57,7 @@ module.exports = {
         return;
       }
 
-      const isPasswordCorrect = await checkPassword(password, patient.password);
+      const isPasswordCorrect = await checkPassword(password, admin.password);
 
       if (!isPasswordCorrect) {
         res.status(401).json({
@@ -65,20 +68,20 @@ module.exports = {
       }
 
       const token = createToken({
-        id: patient.id,
-        name: patient.name,
-        email: patient.email,
+        id: admin.id,
+        name: admin.name,
+        email: admin.email,
       }, process.env.JWT_PRIVATE_KEY || "Token", {
         expiresIn: '1h'
       });
 
       res.status(201).json({
-        id: patient.id,
-        name: patient.name,
-        email: patient.email,
+        id: admin.id,
+        name: admin.name,
+        email: admin.email,
         token,
-        createdAt: patient.createdAt,
-        updatedAt: patient.updatedAt,
+        createdAt: admin.createdAt,
+        updatedAt: admin.updatedAt,
       });
     } catch (err) {
       res.status(400).json({

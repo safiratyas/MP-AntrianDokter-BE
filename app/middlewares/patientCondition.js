@@ -1,4 +1,4 @@
-const patientService = require("../services/patients");
+const patientServices = require('../services/patients');
 
 module.exports = {
   async checkCondition(req, res, next) {
@@ -38,7 +38,7 @@ module.exports = {
       return;
     }
 
-    const uniqueEmail = await patientService.getOne({
+    const uniqueEmail = await patientServices.getOne({
       where: {
         email
       }
@@ -76,7 +76,7 @@ module.exports = {
       return
     }
 
-    const uniqueNIK = await patientService.getOne({
+    const uniqueNIK = await patientServices.getOne({
       where: {
         NIK
       }
@@ -90,7 +90,7 @@ module.exports = {
       return;
     }
 
-    const uniqueBPJS = await patientService.getOne({
+    const uniqueBPJS = await patientServices.getOne({
       where: {
         BPJS
       }

@@ -6,6 +6,19 @@ const apiRouter = express.Router();
 apiRouter.get("/", controllers.api.application.getRoot);
 
 /**
+ * @Admin Resources 
+ */
+
+ apiRouter.post("/api/admins/register",
+ middlewares.adminCondition.checkCondition,
+ controllers.api.admins.register
+);
+
+apiRouter.post("/api/admins/login",
+ controllers.api.admins.login
+);
+
+/**
  * @Patient Resources 
  */
 
