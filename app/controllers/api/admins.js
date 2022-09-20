@@ -1,5 +1,5 @@
 const adminServices = require('../../services/admins');
-const { 
+const {
   checkPassword,
   createToken,
   hashPassword
@@ -91,88 +91,72 @@ module.exports = {
     }
   },
 
-  // async updateDetail(req, res) {
-  //   try {
-  //     const {
-  //       name,
-  //       address,
-  //       image,
-  //       phoneNumber
-  //     } = req.body;
+  async updateDetail(req, res) {
+    try {
+      const {
+        name,
+        image,
+        phoneNumber,
+        gender
+      } = req.body;
 
-  //     const id = req.params.id;
-  //     const compareId = id.toString() === req.patient.id.toString();
-  //     if (!compareId) {
-  //       res.status(401).json({
-  //         status: "FAIL",
-  //         message: "Patient who can edit or delete patient data is him/herself."
-  //       });
-  //       return;
-  //     }
+      const update = await adminServices.update(req.params.id, {
+        name,
+        image,
+        phoneNumber,
+        gender,
+      });
 
-  //     const update = await patientServices.update(req.params.id, {
-  //       name,
-  //       address,
-  //       image,
-  //       phoneNumber,
-  //     });
+      res.status(200).json({
+        status: 'OK',
+        message: `Patient with id ${req.params.id} has been updated.`,
+      });
+    } catch (err) {
+      res.status(422).json({
+        status: 'Failed',
+        message: err.message,
+      });
+    }
+  },
 
-  //     res.status(200).json({
-  //       status: "OK",
-  //       message: `Patient with id ${req.params.id} has been updated.`,
-  //     });
+  async whoAmI(req, res) {
+    res.status(200).json(req.admin);
+  },
 
-  //   } catch (err) {
-  //     res.status(422).json({
-  //       status: "FAIL",
-  //       message: err.message,
-  //     });
-  //   }
-  // },
+  async getAdmin(req, res) {
+    try {
+      const admin = await adminServices.getOne({
+        where: {
+          id: req.params.id
+        },
+        attributes: {
+          exclude: ['password']
+        }
+      });
 
-  // async whoAmI(req, res) {
-  //   res.status(200).json(req.patient);
-  // },
+      if (!admin) {
+        throw new Error(`Admin with id ${req.params.id} not found!`);
+      }
 
-  // async getPatient(req, res) {
-  //   try {
-  //     const patient = await patientServices.getOne({
-  //       where: {
-  //         id: req.params.id
-  //       },
-  //       include: {
-  //         model: Genders,
-  //         as: "genderPatient",
-  //         attributes: ["name"]
-  //       },
-  //       attributes: {
-  //         exclude: ["encryptedPassword"]
-  //       }
-  //     });
+      res.status(200).json(admin);
+    } catch (err) {
+      res.status(404).json({
+        status: 'Failed',
+        message: err.message,
+      });
+    }
+  },
 
-  //     if (!patient) {
-  //       throw new Error(`Patient with id ${req.params.id} not found!`);
-  //     }
+  async getAllAdmins(req, res) {
+    const getAll = await adminServices.list({
+      attributes: {
+        exclude: ['password']
+      }
+    });
 
-  //     res.status(200).json(patient);
-  //   } catch (err) {
-  //     res.status(404).json({
-  //       status: "FAIL",
-  //       message: err.message,
-  //     });
-  //   }
-  // },
-
-  // async getAllPatient(req, res) {
-  //   const getAll = await patientServices.listByCondition({
-  //     attributes: {
-  //       exclude: ["encryptedPassword"]
-  //     }
-  //   });
-
-  //   res.status(200).json({
-  //     status: "success",
-  //     data: getAll
-  //   });
-  // },
+    res.status(200).json({
+      status: 'Success',
+      data: getAll
+    });
+  },
 };

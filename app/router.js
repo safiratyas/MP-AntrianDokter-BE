@@ -18,6 +18,25 @@ apiRouter.post("/api/admins/login",
  controllers.api.admins.login
 );
 
+apiRouter.get("/api/admins/who-am-i",
+  middlewares.authorization.authorize,
+  controllers.api.admins.whoAmI
+);
+
+apiRouter.put("/api/admins/:id/detail",
+  middlewares.authorization.authorize,
+  controllers.api.admins.updateDetail
+);
+
+apiRouter.get("/api/admins/:id",
+  controllers.api.admins.getAdmin
+);
+
+apiRouter.get("/api/admins",
+  middlewares.authorization.authorize,
+  controllers.api.admins.getAllAdmins
+);
+
 /**
  * @Patient Resources 
  */
