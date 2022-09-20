@@ -10,13 +10,13 @@ apiRouter.get("/", controllers.api.application.getRoot);
  */
 
 apiRouter.post("/api/patients/register",
- middlewares.checkCondition.checkCondition,
+ middlewares.patientCondition.checkCondition,
  controllers.api.patients.register
 );
 
-// apiRouter.post("/api/login",
-//  controllers.api.authentication.login
-// );
+apiRouter.post("/api/patients/login",
+ controllers.api.patients.login
+);
 
 // apiRouter.get("/api/who-am-i",
 //   middlewares.authorization.authorize,

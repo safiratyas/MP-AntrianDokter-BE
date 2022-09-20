@@ -1,7 +1,7 @@
-const checkCondition = require("./checkCondition");
-const authorization = require("./authorization");
+const authorization = require('./authorization');
+const patientCondition = require('./patientCondition');
 
 module.exports = {
-    checkCondition,
-    authorization,
+  authorization,
+  patientCondition
 };

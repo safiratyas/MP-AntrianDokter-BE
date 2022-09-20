@@ -35,58 +35,58 @@ module.exports = {
     }
   },
 
-  // async login(req, res) {
-  //   try {
-  //     const email = req.body.email.toLowerCase();
-  //     const password = req.body.password;
+  async login(req, res) {
+    try {
+      const email = req.body.email.toLowerCase();
+      const password = req.body.password;
 
-  //     const patient = await patientServices.getOne({
-  //       where: {
-  //         email
-  //       },
-  //     });
+      const patient = await patientServices.getOne({
+        where: {
+          email
+        },
+      });
 
-  //     if (!patient) {
-  //       res.status(404).json({
-  //         status: "Failed",
-  //         message: "Email not found!"
-  //       });
-  //       return;
-  //     }
+      if (!patient) {
+        res.status(404).json({
+          status: "Failed",
+          message: "Email not found!"
+        });
+        return;
+      }
 
-  //     const isPasswordCorrect = await checkPassword(password, user.encryptedPassword);
+      const isPasswordCorrect = await checkPassword(password, patient.password);
 
-  //     if (!isPasswordCorrect) {
-  //       res.status(401).json({
-  //         status: "Failed",
-  //         message: "Password is incorrect!"
-  //       });
-  //       return;
-  //     }
+      if (!isPasswordCorrect) {
+        res.status(401).json({
+          status: "Failed",
+          message: "Password is incorrect!"
+        });
+        return;
+      }
 
-  //     const token = createToken({
-  //       id: patient.id,
-  //       name: patient.name,
-  //       email: patient.email,
-  //     }, process.env.JWT_PRIVATE_KEY || "Token", {
-  //       expiresIn: '1h'
-  //     });
+      const token = createToken({
+        id: patient.id,
+        name: patient.name,
+        email: patient.email,
+      }, process.env.JWT_PRIVATE_KEY || "Token", {
+        expiresIn: '1h'
+      });
 
-  //     res.status(201).json({
-  //       id: patient.id,
-  //       name: patient.name,
-  //       email: patient.email,
-  //       token,
-  //       createdAt: patient.createdAt,
-  //       updatedAt: patient.updatedAt,
-  //     });
-  //   } catch (err) {
-  //     res.status(400).json({
-  //       status: "Failed",
-  //       message: err.message
-  //     });
-  //   }
-  // },
+      res.status(201).json({
+        id: patient.id,
+        name: patient.name,
+        email: patient.email,
+        token,
+        createdAt: patient.createdAt,
+        updatedAt: patient.updatedAt,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: "Failed",
+        message: err.message
+      });
+    }
+  },
 
   // async updateDetail(req, res) {
   //   try {
