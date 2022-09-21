@@ -5,17 +5,17 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Queues extends Model {
     static associate(models) {
-      this.hasMany(models.Patients, {
-        foreignKey: 'patientId', 
-        as: 'patient',
+      this.belongsTo(models.Doctors, {
+        foreignKey: 'doctorId',
+        as: 'doctor',
       });
-      this.hasMany(models.Examinations, {
+      this.belongsTo(models.Examinations, {
         foreignKey: 'examinationId',
         as: 'examination',
       });
-      this.hasMany(models.Doctors, {
-        foreignKey: 'doctorId',
-        as: 'doctor',
+      this.belongsTo(models.Patients, {
+        foreignKey: 'patientId',
+        as: 'patient',
       });
     }
   }
@@ -23,12 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     patientId: DataTypes.INTEGER,
     examinationId: DataTypes.INTEGER,
     doctorId: DataTypes.INTEGER,
-    dateOfVisit: DataTypes.STRING,
+    dateOfVisit: DataTypes.DATE,
     image: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Queues',
-    underscored: true,
   });
   return Queues;
 };

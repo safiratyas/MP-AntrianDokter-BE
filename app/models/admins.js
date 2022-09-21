@@ -5,10 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Admins extends Model {
     static associate(models) {
-      this.belongsTo(models.Genders, {
-        foreignKey: 'genderId',
-        as: 'gender',
-      });
+      // define association here
     }
   }
   Admins.init({
@@ -16,12 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     image: DataTypes.STRING,
-    phoneNumber: DataTypes.INTEGER,
-    genderId: DataTypes.INTEGER
+    phoneNumber: DataTypes.STRING,
+    gender: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Admins',
-    underscored: true,
   });
   return Admins;
 };

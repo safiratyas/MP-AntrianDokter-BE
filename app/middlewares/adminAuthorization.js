@@ -1,5 +1,5 @@
 const { decodeToken } = require("../plugin");
-const patientServices = require("../services/patients");
+const adminServices = require('../services/admins');
 
 module.exports = {
   async authorize(req, res, next) {
@@ -18,7 +18,7 @@ module.exports = {
         process.env.JWT_PRIVATE_KEY || "Token"
       );
 
-      req.user = await patientServices.get(tokenPayload.id);
+      req.admin = await adminServices.get(tokenPayload.id);
 
       next();
     } catch (err) {

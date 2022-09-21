@@ -1,7 +1,9 @@
-const authentication = require("./authentication");
-const application = require("./application")
+const application = require("./application");
+const patients = require("./patients");
+const admins = require("./admins");
 
 module.exports = {
-    authentication,
-    application,
-}
+  application,
+  admins,
+  patients
+};

@@ -1,19 +1,33 @@
-const { Admins } = require("../models");
+const {
+  Admins
+} = require("../models");
 
 module.exports = {
-	find(id) {
-		return Admins.findByPk(id);
-	},
+  create(inputData) {
+    return Admins.create(inputData);
+  },
 
-	findAll() {
-		return Admins.findAll();
-	},
+  update(id, updateData) {
+    return Admins.update(updateData, {
+      where: {
+        id
+      }
+    });
+  },
 
-	findOne(key) {
-		return Admins.findOne(key);
-	},
+  find(id) {
+    return Admins.findByPk(id);
+  },
 
-	getTotalAdmins() {
-		return Admins.count();
-	},
+  findAll() {
+    return Admins.findAll();
+  },
+
+  findOne(key) {
+    return Admins.findOne(key);
+  },
+
+  getTotalAdmins() {
+    return Admins.count();
+  },
 };

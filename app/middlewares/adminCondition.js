@@ -1,15 +1,17 @@
-const patientService = require("../services/patients");
+const adminServices = require('../services/admins');
 
 module.exports = {
   async checkCondition(req, res, next) {
     const {
-      email,
       name,
-      password
+      email,
+      password,
+      gender
     } = req.body;
+
     if (password.length < 8) {
       res.status(400).json({
-        status: 'failed',
+        status: 'Failed',
         message: 'Password must have at least 8 characters!'
       });
       return;
@@ -17,7 +19,7 @@ module.exports = {
 
     if (!name) {
       res.status(400).json({
-        status: 'failed',
+        status: 'Failed',
         message: 'Name cannot be empty!'
       });
       return;
@@ -27,25 +29,34 @@ module.exports = {
 
     if (email == '' || email.search(filter) == -1) {
       res.status(400).json({
-        status: 'failed',
+        status: 'Failed',
         message: 'Wrong email format!'
       });
       return;
     }
 
-    const uniqueEmail = await patientService.getOne({
+    const uniqueEmail = await adminServices.getOne({
       where: {
         email
-      }
+      },
     });
 
     if (uniqueEmail) {
       res.status(409).json({
-        status: 'failed',
+        status: 'Failed',
         message: 'Email already taken!'
       });
       return;
     }
+
+    if (gender !== 'Pria' && gender !== 'Wanita') {
+      res.status(400).json({
+        status: 'Failed',
+        message: 'Gender must be filled either Pria or Wanita'
+      });
+      return;
+    }
+
     next();
-  },
+  }
 };
