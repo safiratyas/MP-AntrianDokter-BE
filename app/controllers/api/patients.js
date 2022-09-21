@@ -1,4 +1,5 @@
 const patientServices = require('../../services/patients');
+const timeFormat = require('../../utils/timeFormat');
 const {
   checkPassword,
   createToken,
@@ -27,7 +28,7 @@ module.exports = {
         id: patient.id,
         name: patient.name,
         email: patient.email,
-        dateOfBirth: patient.dateOfBirth,
+        dateOfBirth: timeFormat(patient.dateOfBirth),
         address: patient.address,
         gender: patient.gender,
         image: patient.image,
