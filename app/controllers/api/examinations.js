@@ -28,7 +28,7 @@ module.exports = {
       async getAllExamination(req, res) {
         const getAll = await examinationsServices.list({
           attributes: {
-            exclude: ["encryptedPassword"]
+            exclude: ['password']
           }
         });
     
