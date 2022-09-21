@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Patients', {
@@ -18,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       dateOfBirth: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       address: {
         type: Sequelize.STRING
