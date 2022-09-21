@@ -10,6 +10,7 @@ module.exports = {
       address,
       gender,
       NIK,
+      BPJS
     } = req.body;
     if (password.length < 8) {
       res.status(400).json({
@@ -67,7 +68,7 @@ module.exports = {
       return;
     }
 
-    if(gender !== 'Pria' && gender !== 'Wanita') {
+    if (gender !== 'Pria' && gender !== 'Wanita') {
       res.status(400).json({
         status: 'Failed',
         message: 'Gender must be filled either Pria or Wanita'
@@ -88,6 +89,23 @@ module.exports = {
       });
       return;
     }
+
+    if (BPJS) {
+      const uniqueBPJS = await patientServices.getOne({
+        where: {
+          BPJS
+        }
+      });
+
+      if (uniqueBPJS) {
+        res.status(409).json({
+          status: 'Failed',
+          message: 'BPJS already taken!'
+        });
+        return;
+      }
+    }
+
     next();
   },
 };

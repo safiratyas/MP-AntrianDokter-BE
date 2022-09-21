@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     examinationId: DataTypes.INTEGER,
     doctorId: DataTypes.INTEGER,
     dateOfVisit: DataTypes.DATE,
-    image: DataTypes.STRING
+    queueNumber: DataTypes.INTEGER,
+    isDone: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Queues',

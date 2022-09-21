@@ -1,6 +1,28 @@
-const { Queues } = require("../models");
+const {
+	Queues
+} = require("../models");
 
 module.exports = {
+	create(inputData) {
+		return Queues.create(inputData);
+	},
+
+	update(id, updateData) {
+		return Queues.update(updateData, {
+			where: {
+				id
+			}
+		});
+	},
+
+	delete(id) {
+		return Queues.destroy({
+			where: {
+				id
+			}
+		});
+	},
+  
 	find(id) {
 		return Queues.findByPk(id);
 	},

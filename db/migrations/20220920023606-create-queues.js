@@ -38,8 +38,14 @@ module.exports = {
       dateOfVisit: {
         type: Sequelize.DATE
       },
-      image: {
-        type: Sequelize.STRING
+      queueNumber: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: false,
+      },
+      isDone: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

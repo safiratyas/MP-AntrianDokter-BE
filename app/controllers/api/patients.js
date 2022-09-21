@@ -20,7 +20,7 @@ module.exports = {
         address: req.body.address,
         gender: req.body.gender,
         image: null,
-        BPJS: null,
+        BPJS: req.body.BPJS || null,
         NIK: req.body.NIK,
         phoneNumber: req.body.phoneNumber,
       });
@@ -33,6 +33,7 @@ module.exports = {
         address: patient.address,
         gender: patient.gender,
         image: patient.image,
+        BPJS: patient.BPJS,
         NIK: patient.NIK,
         phoneNumber: patient.phoneNumber,
         createdAt: patient.createdAt,
