@@ -69,6 +69,34 @@ apiRouter.get("/api/patients",
   controllers.api.patients.getAllPatients
 );
 
+/**
+ * @Doctors Resources 
+ */
+
+ apiRouter.get("/api/doctor/:id",
+ middlewares.patientAuthorization.authorize,
+ controllers.api.doctors.getDoctors
+);
+
+apiRouter.get("/api/doctors",
+  middlewares.patientAuthorization.authorize,
+  controllers.api.doctors.getAllDoctors
+);
+
+/**
+ * @Examinations Resources 
+ */
+
+ apiRouter.get("/api/examination/:id",
+ middlewares.patientAuthorization.authorize,
+ controllers.api.examinations.getExaminations
+);
+
+apiRouter.get("/api/examinations",
+  middlewares.patientAuthorization.authorize,
+  controllers.api.examinations.getAllExamination
+);
+
 apiRouter.use(controllers.api.application.handleNotFound);
 
 module.exports = apiRouter;
