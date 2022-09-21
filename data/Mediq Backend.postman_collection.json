@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "2114f38d-67e6-4e29-840a-c8f9e18ac69e",
+		"name": "Mediq Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20453714"
+	},
+	"item": [
+		{
+			"name": "Patients Data",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Billie Eilish\",\r\n    \"email\": \"eilish@gmail.com\",\r\n    \"password\": \"billieilish\",\r\n    \"dateOfBirth\": \"10 Februari 2001\",\r\n    \"address\": \"Jl. Beverly Hills\",\r\n    \"gender\": \"Wanita\",\r\n    \"image\": null,\r\n    \"NIK\": \"2310292922\",\r\n    \"BPJS\": \"08212102912090\",\r\n    \"phoneNumber\": \"08212313131\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/patients/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patients",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"swifties@gmail.com\",\r\n    \"password\": \"augustswift\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/patients/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patients",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Who Am I",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY3ODgwNCwiZXhwIjoxNjYzNjgyNDA0fQ.25GPeYOf7iC7KtiDzXCkAgsa8-cIviAwXNx5XgRl8GE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/patients/who-am-i",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patients",
+								"who-am-i"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBTd2lmdCIsImVtYWlsIjoic3dpZnRpZXNAZ21haWwuY29tIiwiaWF0IjoxNjYzNjU2NjEwLCJleHAiOjE2NjM2NjAyMTB9.cadAX7A_w2U_BkaTPIvrl1PJFg6CrMDBKPxPc4uoyd8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Taylor Alison Swift\",\r\n    \"dateOfBirth\": \"14 Februari 2001\",\r\n    \"address\": \"Jl. Beverly Hills\",\r\n    \"gender\": \"Wanita\",\r\n    \"image\": null,\r\n    \"NIK\": \"13021212121\",\r\n    \"BPJS\": \"002311424535\",\r\n    \"phoneNumber\": \"081213242425\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/patients/2/detail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patients",
+								"2",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/patients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Patients",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/patients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admins Data",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Siti Haryati\",\r\n    \"email\": \"haryati@gmail.com\",\r\n    \"password\": \"sitiharyati\",\r\n    \"gender\": \"Wanita\",\r\n    \"image\": null,\r\n    \"phoneNumber\": \"08122331390\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/admins/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admins",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"indeksaoda@gmail.com\",\r\n    \"password\": \"indeksaoda\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/admins/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admins",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Who Am I",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkluZGVrIiwiZW1haWwiOiJpbmRla3Nhb2RhQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY3OTI5NSwiZXhwIjoxNjYzNjgyODk1fQ.7AtR2ec7O5TM8uvq7LU0kIgJD_G-SMSY9WQnaHTYbmE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/admins/who-am-i",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admins",
+								"who-am-i"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik1hZ3RoaWxkYSBTYW9kYSIsImVtYWlsIjoiaW5kZWtzYW9kYUBnbWFpbC5jb20iLCJpYXQiOjE2NjM2NzQ3NTAsImV4cCI6MTY2MzY3ODM1MH0.wRtJs82bnSs26xgJn01_6QL729uc4nBHR7KVVXirkPk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Indek\",\r\n    \"image\": null,\r\n    \"phoneNumber\": \"082121233432\",\r\n    \"gender\": \"Wanita\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/admins/1/detail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admins",
+								"1",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/admins/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admins",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Admins",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik1hZ3RoaWxkYSBTYW9kYSIsImVtYWlsIjoiaW5kZWtzYW9kYUBnbWFpbC5jb20iLCJpYXQiOjE2NjM2NzU5MDcsImV4cCI6MTY2MzY3OTUwN30._CSF4ivvOdqgWBVOVo9M0ccG4Uzx-dTVx-FCdp_PoXg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/admins",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
