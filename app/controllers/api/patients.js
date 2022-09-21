@@ -20,6 +20,7 @@ module.exports = {
         address: req.body.address,
         gender: req.body.gender,
         image: null,
+        BPJS: null,
         NIK: req.body.NIK,
         phoneNumber: req.body.phoneNumber,
       });
