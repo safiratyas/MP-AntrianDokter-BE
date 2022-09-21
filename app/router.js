@@ -3,6 +3,10 @@ const controllers = require("./controllers");
 const middlewares = require("./middlewares");
 const apiRouter = express.Router();
 
+// configure and initialization swagger
+const swaggerUI = require('swagger-ui-express');
+const swaggerDocument = require('../config/swagger.json');
+
 apiRouter.get("/", controllers.api.application.getRoot);
 
 /**
@@ -68,6 +72,13 @@ apiRouter.get("/api/patients",
   middlewares.patientAuthorization.authorize,
   controllers.api.patients.getAllPatients
 );
+
+/**
+ * @API Documentation
+ */
+
+ apiRouter.get('/documentation.json', (req, res) => res.send(swaggerDocument));
+ apiRouter.use('/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 apiRouter.use(controllers.api.application.handleNotFound);
 
