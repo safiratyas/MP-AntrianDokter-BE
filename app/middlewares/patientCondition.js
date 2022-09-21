@@ -10,7 +10,6 @@ module.exports = {
       address,
       gender,
       NIK,
-      BPJS, 
     } = req.body;
     if (password.length < 8) {
       res.status(400).json({
@@ -86,20 +85,6 @@ module.exports = {
       res.status(409).json({
         status: 'Failed',
         message: 'NIK already taken!'
-      });
-      return;
-    }
-
-    const uniqueBPJS = await patientServices.getOne({
-      where: {
-        BPJS
-      }
-    });
-
-    if (uniqueBPJS) {
-      res.status(409).json({
-        status: 'Failed',
-        message: 'BPJS already taken!'
       });
       return;
     }
