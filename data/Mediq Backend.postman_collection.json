@@ -371,6 +371,137 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Doctors Data",
+			"item": [
+				{
+					"name": "Doctor By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/doctor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"doctor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Doctors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/doctors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"doctors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Examinations Data",
+			"item": [
+				{
+					"name": "Examination By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/examination/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"examination",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Examinations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/examinations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"examinations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
+
 	]
 }
