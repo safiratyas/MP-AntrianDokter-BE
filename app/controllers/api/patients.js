@@ -1,5 +1,4 @@
 const patientServices = require('../../services/patients');
-const timeFormat = require('../../utils/timeFormat');
 const { Doctors } = require('../../models')
 const {
   checkPassword,
@@ -31,7 +30,7 @@ module.exports = {
         id: patient.id,
         name: patient.name,
         email: patient.email,
-        dateOfBirth: timeFormat(patient.dateOfBirth),
+        dateOfBirth: patient.dateOfBirth,
         address: patient.address,
         gender: patient.gender,
         image: patient.image,
@@ -82,7 +81,7 @@ module.exports = {
         id: patient.id,
         name: patient.name,
         email: patient.email,
-        role: "Pasien",
+        role: 'Pasien',
       }, process.env.JWT_PRIVATE_KEY || 'Token', {
         expiresIn: '1h'
       });
