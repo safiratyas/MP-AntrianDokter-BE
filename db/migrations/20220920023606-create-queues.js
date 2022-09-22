@@ -17,6 +17,18 @@ module.exports = {
           key: "id",
         },
       },
+      patientName: {
+        type: Sequelize.STRING
+      },
+      polyId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Polyclinics",
+          },
+          key: "id",
+        },
+      },
       examinationId: {
         type: Sequelize.INTEGER,
         references: {
@@ -36,10 +48,16 @@ module.exports = {
         },
       },
       dateOfVisit: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
-      image: {
-        type: Sequelize.STRING
+      queueNumber: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: false,
+      },
+      isDone: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

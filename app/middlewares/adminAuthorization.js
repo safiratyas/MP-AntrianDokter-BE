@@ -18,6 +18,14 @@ module.exports = {
         process.env.JWT_PRIVATE_KEY || "Token"
       );
 
+      if(tokenPayload.role !== 'Admin') {
+        res.status(401).json({
+          status: 'Failed',
+          message: 'Unauthorized'
+        });
+        return;
+      }
+
       req.admin = await adminServices.get(tokenPayload.id);
 
       next();

@@ -3,6 +3,10 @@ const controllers = require("./controllers");
 const middlewares = require("./middlewares");
 const apiRouter = express.Router();
 
+// configure and initialization swagger
+const swaggerUI = require('swagger-ui-express');
+const swaggerDocument = require('../config/swagger.json');
+
 apiRouter.get("/", controllers.api.application.getRoot);
 
 /**
@@ -21,6 +25,11 @@ apiRouter.post("/api/admins/login",
 apiRouter.get("/api/admins/who-am-i",
   middlewares.adminAuthorization.authorize,
   controllers.api.admins.whoAmI
+);
+
+apiRouter.put("/api/admins/update-booking/:bookingId",
+  middlewares.adminAuthorization.authorize,
+  controllers.api.admins.updateBookingPatient
 );
 
 apiRouter.put("/api/admins/:id/detail",
@@ -71,6 +80,19 @@ apiRouter.get("/api/patients",
 );
 
 /**
+ * @Queue Resources 
+ */
+
+apiRouter.post("/api/patients/booking",
+  middlewares.patientAuthorization.authorize,
+  controllers.api.queue.createQueue
+);
+
+apiRouter.delete("/api/patients/booking",
+  middlewares.adminAuthorization.authorize,
+  controllers.api.queue.deleteAllQueue
+);
+
  * @Doctors Resources 
  */
 
@@ -101,6 +123,13 @@ apiRouter.get("/api/patients",
   middlewares.patientAuthorization.authorize,
   controllers.api.examinations.getAllExamination
 );
+
+/**
+ * @API Documentation
+ */
+
+ apiRouter.get('/documentation.json', (req, res) => res.send(swaggerDocument));
+ apiRouter.use('/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 apiRouter.use(controllers.api.application.handleNotFound);
 

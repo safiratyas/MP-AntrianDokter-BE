@@ -1,4 +1,5 @@
 const adminServices = require('../../services/admins');
+const queueServices = require('../../services/queues');
 const {
   checkPassword,
   createToken,
@@ -71,6 +72,7 @@ module.exports = {
         id: admin.id,
         name: admin.name,
         email: admin.email,
+        role: 'Admin',
       }, process.env.JWT_PRIVATE_KEY || "Token", {
         expiresIn: '1h'
       });
@@ -132,6 +134,34 @@ module.exports = {
 
   async whoAmI(req, res) {
     res.status(200).json(req.admin);
+  },
+
+  async updateBookingPatient(req, res){
+    try {
+      const { isDone } = req.body;
+      const update = await queueServices.update(req.params.bookingId, {
+        isDone
+      });
+
+      res.status(200).json({
+        status: 'OK',
+        message: `Patient with bookingId ${req.params.bookingId} has done for checking.`,
+      });
+    } catch (err) {
+      res.status(422).json({
+        error: err.name,
+        message: err.message
+      })
+    }
+  },
+
+  async getAllQueue(req, res){
+    const getAll = await queueServices.list();
+
+    res.status(200).json({
+      status: 'Success',
+      data: getAll
+    });
   },
 
   async getAdmin(req, res) {

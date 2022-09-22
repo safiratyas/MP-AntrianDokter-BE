@@ -10,20 +10,27 @@ module.exports = {
       address,
       gender,
       NIK,
-      BPJS, 
+      BPJS
     } = req.body;
-    if (password.length < 8) {
-      res.status(400).json({
-        status: 'Failed',
-        message: 'Password must have at least 8 characters!'
-      });
-      return;
-    }
 
     if (!name) {
       res.status(400).json({
         status: 'failed',
         message: 'Name cannot be empty!'
+      });
+      return;
+    }
+
+    const uniqueNIK = await patientServices.getOne({
+      where: {
+        NIK
+      }
+    });
+
+    if (uniqueNIK) {
+      res.status(409).json({
+        status: 'Failed',
+        message: 'NIK already taken!'
       });
       return;
     }
@@ -68,7 +75,7 @@ module.exports = {
       return;
     }
 
-    if(gender !== 'Pria' && gender !== 'Wanita') {
+    if (gender !== 'Pria' && gender !== 'Wanita') {
       res.status(400).json({
         status: 'Failed',
         message: 'Gender must be filled either Pria or Wanita'
@@ -76,33 +83,30 @@ module.exports = {
       return
     }
 
-    const uniqueNIK = await patientServices.getOne({
-      where: {
-        NIK
-      }
-    });
+    if (BPJS) {
+      const uniqueBPJS = await patientServices.getOne({
+        where: {
+          BPJS
+        }
+      });
 
-    if (uniqueNIK) {
-      res.status(409).json({
+      if (uniqueBPJS) {
+        res.status(409).json({
+          status: 'Failed',
+          message: 'BPJS already taken!'
+        });
+        return;
+      }
+    }
+
+    if (password.length < 8) {
+      res.status(400).json({
         status: 'Failed',
-        message: 'NIK already taken!'
+        message: 'Password must have at least 8 characters!'
       });
       return;
     }
 
-    const uniqueBPJS = await patientServices.getOne({
-      where: {
-        BPJS
-      }
-    });
-
-    if (uniqueBPJS) {
-      res.status(409).json({
-        status: 'Failed',
-        message: 'BPJS already taken!'
-      });
-      return;
-    }
     next();
   },
 };

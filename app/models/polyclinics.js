@@ -3,24 +3,23 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Doctors extends Model {
+  class Polyclinics extends Model {
     static associate(models) {
       this.hasMany(models.Queues, {
-        foreignKey: 'doctorId',
-        as: 'doctor',
+        foreignKey: 'polyId',
+        as: 'poly'
       });
-      this.belongsTo(models.Polyclinics, {
+      this.hasMany(models.Doctors, {
         foreignKey: 'specialistId',
         as: 'specialist'
       });
     }
   }
-  Doctors.init({
-    name: DataTypes.STRING,
-    specialistId: DataTypes.INTEGER
+  Polyclinics.init({
+    name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Doctors',
+    modelName: 'Polyclinics',
   });
-  return Doctors;
+  return Polyclinics;
 };
