@@ -93,8 +93,10 @@ apiRouter.delete("/api/patients/booking",
   controllers.api.queue.deleteAllQueue
 );
 
+/**
  * @Doctors Resources 
  */
+
 
  apiRouter.get("/api/doctor/:id",
  middlewares.adminAuthorization.authorize,
