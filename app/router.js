@@ -61,11 +61,12 @@ apiRouter.put("/api/patients/:id/detail",
 );
 
 apiRouter.get("/api/patients/:id",
+  middlewares.adminAuthorization.authorize,
   controllers.api.patients.getPatient
 );
 
 apiRouter.get("/api/patients",
-  middlewares.patientAuthorization.authorize,
+  middlewares.adminAuthorization.authorize,
   controllers.api.patients.getAllPatients
 );
 
@@ -74,11 +75,13 @@ apiRouter.get("/api/patients",
  */
 
  apiRouter.get("/api/doctor/:id",
+ middlewares.adminAuthorization.authorize,
  middlewares.patientAuthorization.authorize,
  controllers.api.doctors.getDoctors
 );
 
-apiRouter.get("/api/doctors",
+  apiRouter.get("/api/doctors",
+  middlewares.adminAuthorization.authorize,
   middlewares.patientAuthorization.authorize,
   controllers.api.doctors.getAllDoctors
 );
@@ -88,11 +91,13 @@ apiRouter.get("/api/doctors",
  */
 
  apiRouter.get("/api/examination/:id",
+ middlewares.adminAuthorization.authorize,
  middlewares.patientAuthorization.authorize,
  controllers.api.examinations.getExaminations
 );
 
-apiRouter.get("/api/examinations",
+  apiRouter.get("/api/examinations",
+  middlewares.adminAuthorization.authorize,
   middlewares.patientAuthorization.authorize,
   controllers.api.examinations.getAllExamination
 );

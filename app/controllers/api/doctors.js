@@ -28,7 +28,7 @@ module.exports = {
       async getAllDoctors(req, res) {
         const getAll = await doctorsServices.list({
           attributes: {
-            exclude: ["encryptedPassword"]
+            exclude: ['password']
           }
         });
     
