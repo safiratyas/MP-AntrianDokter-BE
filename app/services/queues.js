@@ -13,6 +13,10 @@ module.exports = {
     return queuesRepository.delete(id);
   },
 
+  deleteAll(){
+    return queuesRepository.deleteAll();
+  },
+
   async list() {
     const queues = await queuesRepository.findAll();
     const queuesCount = await queuesRepository.getTotalQueues();
@@ -21,6 +25,10 @@ module.exports = {
       data: queues,
       count: queuesCount,
     };
+  },
+
+  async listByCondition(query) {
+    return queuesRepository.findAll(query)
   },
 
   get(id) {

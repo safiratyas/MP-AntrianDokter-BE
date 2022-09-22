@@ -1,10 +1,12 @@
 const patientServices = require('../../services/patients');
 const timeFormat = require('../../utils/timeFormat');
+const { Doctors } = require('../../models')
 const {
   checkPassword,
   createToken,
   hashPassword
 } = require('../../plugin');
+const queue = require('./queue');
 
 module.exports = {
   async register(req, res) {
@@ -80,6 +82,7 @@ module.exports = {
         id: patient.id,
         name: patient.name,
         email: patient.email,
+        role: "Pasien",
       }, process.env.JWT_PRIVATE_KEY || 'Token', {
         expiresIn: '1h'
       });

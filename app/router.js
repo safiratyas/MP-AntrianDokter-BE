@@ -27,6 +27,11 @@ apiRouter.get("/api/admins/who-am-i",
   controllers.api.admins.whoAmI
 );
 
+apiRouter.put("/api/admins/update-booking/:bookingId",
+  middlewares.adminAuthorization.authorize,
+  controllers.api.admins.updateBookingPatient
+);
+
 apiRouter.put("/api/admins/:id/detail",
   middlewares.adminAuthorization.authorize,
   controllers.api.admins.updateDetail
@@ -71,6 +76,20 @@ apiRouter.get("/api/patients/:id",
 apiRouter.get("/api/patients",
   middlewares.patientAuthorization.authorize,
   controllers.api.patients.getAllPatients
+);
+
+/**
+ * @Queue Resources 
+ */
+
+apiRouter.post("/api/patients/booking",
+  middlewares.patientAuthorization.authorize,
+  controllers.api.queue.createQueue
+);
+
+apiRouter.delete("/api/patients/booking",
+  middlewares.adminAuthorization.authorize,
+  controllers.api.queue.deleteAllQueue
 );
 
 /**

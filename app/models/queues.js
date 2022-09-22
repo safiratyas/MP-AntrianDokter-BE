@@ -17,13 +17,19 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'patientId',
         as: 'patient',
       });
+      this.belongsTo(models.Polyclinics, {
+        foreignKey: 'polyId',
+        as: 'poly',
+      });
     }
   }
   Queues.init({
     patientId: DataTypes.INTEGER,
+    patientName: DataTypes.STRING,
+    polyId: DataTypes.INTEGER,
     examinationId: DataTypes.INTEGER,
     doctorId: DataTypes.INTEGER,
-    dateOfVisit: DataTypes.DATE,
+    dateOfVisit: DataTypes.DATEONLY,
     queueNumber: DataTypes.INTEGER,
     isDone: DataTypes.BOOLEAN
   }, {

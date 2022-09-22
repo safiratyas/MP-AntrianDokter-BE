@@ -22,13 +22,21 @@ module.exports = {
 			}
 		});
 	},
+
+	deleteAll(){
+		Queues.destroy({
+			where: {},
+			truncate: true,
+			restartIdentity: true
+		})
+	},
   
 	find(id) {
 		return Queues.findByPk(id);
 	},
 
-	findAll() {
-		return Queues.findAll();
+	findAll(queue) {
+		return Queues.findAll(queue);
 	},
 
 	findOne(key) {

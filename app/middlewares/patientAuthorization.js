@@ -17,7 +17,7 @@ module.exports = {
         token,
         process.env.JWT_PRIVATE_KEY || "Token"
       );
-
+      
       req.patient = await patientServices.get(tokenPayload.id);
 
       next();

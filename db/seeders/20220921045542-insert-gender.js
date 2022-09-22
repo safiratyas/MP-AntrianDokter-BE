@@ -1,8 +1,8 @@
 'use strict';
 
 const genders = [
-  "Wanita",
-  "Pria"
+  "Pria",
+  "Wanita"
 ];
 
 module.exports = {
