@@ -98,7 +98,6 @@ apiRouter.delete("/api/patients/booking",
  */
 
 apiRouter.get("/api/doctors/:id",
-  middlewares.adminAuthorization.authorize,
   controllers.api.doctors.getDoctor
 );
 
@@ -111,13 +110,8 @@ apiRouter.get("/api/doctors",
  * @Examinations Resources 
  */
 
-apiRouter.get("/api/examination/:id",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.examinations.getExaminations
-);
-
 apiRouter.get("/api/examinations",
-  middlewares.adminAuthorization.authorize,
+  // middlewares.adminAuthorization.authorize,
   controllers.api.examinations.getAllExamination
 );
 
