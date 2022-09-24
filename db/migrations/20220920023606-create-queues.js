@@ -20,6 +20,9 @@ module.exports = {
       patientName: {
         type: Sequelize.STRING
       },
+      patientNIK: {
+        type: Sequelize.STRING
+      },
       polyId: {
         type: Sequelize.INTEGER,
         references: {

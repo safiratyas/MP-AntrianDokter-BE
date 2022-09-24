@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
   Queues.init({
     patientId: DataTypes.INTEGER,
     patientName: DataTypes.STRING,
+    patientNIK: DataTypes.STRING,
     polyId: DataTypes.INTEGER,
     examinationId: DataTypes.INTEGER,
     doctorId: DataTypes.INTEGER,
