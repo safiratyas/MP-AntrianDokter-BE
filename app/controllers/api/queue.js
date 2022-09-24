@@ -3,7 +3,7 @@ const queueServices = require('../../services/queues');
 module.exports = {
   async createQueue(req, res) {
     try {
-      const { name, date, examinationId, poly, doctorId } = req.body;
+      const { name, patientNIK, examinationId } = req.body;
       // const dateNow = new Date(date);
       // const numberOfBookings = await queueServices.list();
       // var count = 0;
@@ -26,17 +26,21 @@ module.exports = {
       const booking = await queueServices.create({
         patientId: req.patient.id,
         patientName: req.body.name,
+        patientNIK: req.body.patientNIK,
         examinationId: parseInt(examinationId),
-        doctorId: doctorId,
-        polyId: req.body.poly,
-        dateOfVisit: new Date(date),
+        dateOfVisit: new Date(),
         isDone: false
       })
       console.log(booking.dateOfVisit, booking.createdAt);
 
       res.status(201).json({
-        status: 'Success',
-        message: `Your Booking Number is ${booking.queueNumber}`
+        // status: 'Success',
+        // message: `Your Booking Number is ${booking.queueNumber}`
+        Name: booking.patientName,
+        NIK: booking.patientNIK,
+        Date: booking.dateOfVisit,
+        queueNumber: booking.queueNumber,
+        isDone: false
       })
 
     } catch (err) {

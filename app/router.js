@@ -85,6 +85,7 @@ apiRouter.get("/api/patients",
 
 apiRouter.post("/api/patients/booking",
   middlewares.patientAuthorization.authorize,
+  middlewares.queueCondition.checkCondition,
   controllers.api.queue.createQueue
 );
 
