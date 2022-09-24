@@ -27,9 +27,6 @@ module.exports = {
       gender: {
         type: Sequelize.STRING,
       },
-      image: {
-        type: Sequelize.STRING
-      },
       NIK: {
         type: Sequelize.STRING
       },
