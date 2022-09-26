@@ -31,16 +31,14 @@ module.exports = {
         dateOfVisit: new Date(),
         isDone: false
       })
-      console.log(booking.dateOfVisit, booking.createdAt);
 
       res.status(201).json({
-        // status: 'Success',
-        // message: `Your Booking Number is ${booking.queueNumber}`
         Name: booking.patientName,
         NIK: booking.patientNIK,
         Date: booking.dateOfVisit,
         queueNumber: booking.queueNumber,
-        isDone: false
+        examinationId: booking.examinationId,
+        isDone: false,
       })
 
     } catch (err) {
@@ -51,7 +49,7 @@ module.exports = {
     }
   },
 
-  async deleteAllQueue(req, res){
+  async deleteAllQueue(req, res) {
     const deleteQueue = await queueServices.deleteAll();
     res.status(200).json({
       status: 'Success',

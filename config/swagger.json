@@ -154,7 +154,7 @@
                   "type": "string"
                 },
                 "dateOfBirth": {
-                  "type": "string"
+                  "type": "date"
                 },
                 "address": {
                   "type": "string"
