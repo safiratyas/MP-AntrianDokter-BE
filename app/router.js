@@ -94,11 +94,22 @@ apiRouter.delete("/api/patients/booking",
   controllers.api.queue.deleteAllQueue
 );
 
+apiRouter.get("/api/booking/:id",
+  middlewares.adminAuthorization.authorize,
+  controllers.api.queue.getQueue
+);
+
+apiRouter.get("/api/all/booking",
+  middlewares.adminAuthorization.authorize,
+  controllers.api.queue.getAllQueues
+);
+
 /**
  * @Doctors Resources 
  */
 
 apiRouter.get("/api/doctors/:id",
+  middlewares.adminAuthorization.authorize,
   controllers.api.doctors.getDoctor
 );
 
