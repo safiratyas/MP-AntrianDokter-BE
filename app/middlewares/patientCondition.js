@@ -15,8 +15,16 @@ module.exports = {
 
     if (!name) {
       res.status(400).json({
-        status: 'failed',
-        message: 'Name cannot be empty!'
+        status: 'Failed',
+        message: 'Nama tidak boleh kosong!'
+      });
+      return;
+    }
+
+    if (!NIK) {
+      res.status(400).json({
+        status: 'Failed',
+        message: 'NIK tidak boleh kosong!'
       });
       return;
     }
@@ -30,7 +38,15 @@ module.exports = {
     if (uniqueNIK) {
       res.status(409).json({
         status: 'Failed',
-        message: 'NIK already taken!'
+        message: 'NIK sudah terdaftar!'
+      });
+      return;
+    }
+
+    if (!email) {
+      res.status(400).json({
+        status: 'Failed',
+        message: 'Email tidak boleh kosong!'
       });
       return;
     }
@@ -40,7 +56,7 @@ module.exports = {
     if (email == '' || email.search(filter) == -1) {
       res.status(400).json({
         status: 'Failed',
-        message: 'Wrong email format!'
+        message: 'Format penulisan email salah!'
       });
       return;
     }
@@ -54,7 +70,7 @@ module.exports = {
     if (uniqueEmail) {
       res.status(409).json({
         status: 'Failed',
-        message: 'Email already taken!'
+        message: 'Email sudah terdaftar!'
       });
       return;
     }
@@ -62,7 +78,7 @@ module.exports = {
     if (!dateOfBirth) {
       res.status(400).json({
         status: 'Failed',
-        message: 'Date of Birth cannot be empty!'
+        message: 'Tanggal lahir tidak boleh kosong!'
       });
       return;
     }
@@ -70,18 +86,26 @@ module.exports = {
     if (!address) {
       res.status(400).json({
         status: 'Failed',
-        message: 'Address cannot be empty!'
+        message: 'Alamat tidak boleh kosong!'
       });
       return;
     }
 
-    if (gender !== 'Pria' && gender !== 'Wanita') {
+    if (!gender) {
       res.status(400).json({
         status: 'Failed',
-        message: 'Gender must be filled either Pria or Wanita'
+        message: 'Gender tidak boleh kosong!'
       });
-      return
+      return;
     }
+
+    // if (gender === 'Pria' || gender === 'Wanita') {
+    //   res.status(201).json({
+    //     status: 'Failed',
+    //     message: 'Gender harus diisi sebagai Pria atau Wanita'
+    //   });
+    //   return
+    // }
 
     if (BPJS) {
       const uniqueBPJS = await patientServices.getOne({
@@ -99,10 +123,18 @@ module.exports = {
       }
     }
 
+    if (!password) {
+      res.status(400).json({
+        status: 'Failed',
+        message: 'Password tidak boleh kosong!'
+      });
+      return;
+    }
+    
     if (password.length < 8) {
       res.status(400).json({
         status: 'Failed',
-        message: 'Password must have at least 8 characters!'
+        message: 'Password harus lebih dari 7 karakter!'
       });
       return;
     }
