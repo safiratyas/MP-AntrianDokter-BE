@@ -535,9 +535,6 @@
         "gender": {
           "type": "string"
         },
-        "image": {
-          "type": "string"
-        },
         "NIK": {
           "type": "string"
         },
@@ -597,9 +594,6 @@
         "gender": {
           "type": "string"
         },
-        "image": {
-          "type": "string"
-        },
         "NIK": {
           "type": "string"
         },
@@ -628,9 +622,6 @@
           "type": "string"
         },
         "gender": {
-          "type": "string"
-        },
-        "image": {
           "type": "string"
         },
         "NIK": {
@@ -671,9 +662,6 @@
         "gender": {
           "type": "string"
         },
-        "image": {
-          "type": "string"
-        },
         "NIK": {
           "type": "string"
         },
@@ -706,9 +694,6 @@
         "password": {
           "type": "string"
         },
-        "image": {
-          "type": "string"
-        },
         "phoneNumber": {
           "type": "string"
         },
@@ -737,9 +722,6 @@
         "password": {
           "type": "string"
         },
-        "image": {
-          "type": "string"
-        },
         "phoneNumber": {
           "type": "string"
         },
@@ -762,9 +744,6 @@
           "type": "string"
         },
         "gender": {
-          "type": "string"
-        },
-        "image": {
           "type": "string"
         },
         "phoneNumber": {
@@ -794,9 +773,6 @@
           "type": "string"
         },
         "password": {
-          "type": "string"
-        },
-        "image": {
           "type": "string"
         },
         "phoneNumber": {
