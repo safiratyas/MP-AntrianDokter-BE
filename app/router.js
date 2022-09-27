@@ -94,12 +94,12 @@ apiRouter.delete("/api/patients/booking",
   controllers.api.queue.deleteAllQueue
 );
 
-apiRouter.get("/api/booking/:id",
+apiRouter.get("/api/bookings/:id",
   middlewares.adminAuthorization.authorize,
   controllers.api.queue.getQueue
 );
 
-apiRouter.get("/api/all/booking",
+apiRouter.get("/api/bookings",
   middlewares.adminAuthorization.authorize,
   controllers.api.queue.getAllQueues
 );

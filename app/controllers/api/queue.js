@@ -4,25 +4,7 @@ module.exports = {
   async createQueue(req, res) {
     try {
       const { name, patientNIK, examinationId } = req.body;
-      // const dateNow = new Date(date);
-      // const numberOfBookings = await queueServices.list();
-      // var count = 0;
-
-      // for (let i = 0; i < numberOfBookings.length; i++) {
-      //   console.log(numberOfBookings.dateOfVisit, dateNow);
-      //   if (numberOfBookings.dateOfVisit.getDay() == dateNow.getDay()) {
-      //     count++
-      //   }
-      // }
-      
-      // if (count >= 3) {
-      //   res.status(422).json({
-      //     status: 'Failed',
-      //     message: 'Full Booked'
-      //   });
-      //   return;
-      // }
-
+  
       const booking = await queueServices.create({
         patientId: req.patient.id,
         patientName: req.body.name,
@@ -30,16 +12,9 @@ module.exports = {
         examinationId: parseInt(examinationId),
         dateOfVisit: new Date(),
         isDone: false
-      })
+      });
 
-      res.status(201).json({
-        Name: booking.patientName,
-        NIK: booking.patientNIK,
-        Date: booking.dateOfVisit,
-        queueNumber: booking.queueNumber,
-        examinationId: booking.examinationId,
-        isDone: false,
-      })
+      res.status(201).json(booking);
 
     } catch (err) {
       res.status(400).json({
@@ -63,9 +38,6 @@ module.exports = {
         where: {
           id: req.params.id
         },
-        attributes: {
-          exclude: []
-        }
       });
 
       if (!queue) {
@@ -82,11 +54,7 @@ module.exports = {
   },
 
   async getAllQueues(req, res) {
-    const getAll = await queueServices.list({
-      attributes: {
-        exclude: []
-      }
-    });
+    const getAll = await queueServices.list();
 
     res.status(200).json({
       status: 'Success',
