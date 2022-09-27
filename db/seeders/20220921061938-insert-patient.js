@@ -79,7 +79,6 @@ module.exports = {
             dateOfBirth: patient.dateOfBirth,
             address: `Jalan Jayakarta Blok ${randAlpha} Nomor ${getRandDigits}.`,
             gender: patient.gender,
-            image: `https://randomuser.me/api/portraits/lego/${rand}.jpg`,
             NIK: `31${Math.random().toString().substring(5,15)}`,
             BPJS: `010${Math.random().toString().substring(5,15)}`,
             phoneNumber: `08${Math.random().toString().substring(5,15)}`,

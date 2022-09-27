@@ -85,6 +85,7 @@ apiRouter.get("/api/patients",
 
 apiRouter.post("/api/patients/booking",
   middlewares.patientAuthorization.authorize,
+  middlewares.queueCondition.checkCondition,
   controllers.api.queue.createQueue
 );
 
@@ -102,6 +103,7 @@ apiRouter.get("/api/all/booking",
   middlewares.adminAuthorization.authorize,
   controllers.api.queue.getAllQueues
 );
+
 /**
  * @Doctors Resources 
  */
@@ -121,7 +123,7 @@ apiRouter.get("/api/doctors",
  */
 
 apiRouter.get("/api/examinations",
-  middlewares.adminAuthorization.authorize,
+  // middlewares.adminAuthorization.authorize,
   controllers.api.examinations.getAllExamination
 );
 

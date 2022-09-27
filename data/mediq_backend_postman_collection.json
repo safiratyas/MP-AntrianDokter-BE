@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"name\": \"Billie Eilish\",\r\n    \"email\": \"eilish@gmail.com\",\r\n    \"password\": \"billieilish\",\r\n    \"dateOfBirth\": \"10 Februari 2001\",\r\n    \"address\": \"Jl. Beverly Hills\",\r\n    \"gender\": \"Wanita\",\r\n    \"image\": null,\r\n    \"NIK\": \"2310292922\",\r\n    \"BPJS\": \"08212102912090\",\r\n    \"phoneNumber\": \"08212313131\"\r\n}",
+							"raw": "{ \r\n    \"name\": \"Tulus\",\r\n    \"email\": \"sepatu@gmail.com\",\r\n    \"password\": \"tuluspalingkeren\",\r\n    \"dateOfBirth\": \"2000-10-22\",\r\n    \"address\": \"Jl. Jakarta\",\r\n    \"gender\": \"Pria\",\r\n    \"image\": null,\r\n    \"NIK\": \"31762212128198\",\r\n    \"phoneNumber\": \"082121283339\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -46,7 +46,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"swifties@gmail.com\",\r\n    \"password\": \"augustswift\"\r\n}",
+							"raw": "{\r\n    \"email\": \"rezaalhady@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,7 +76,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY3ODgwNCwiZXhwIjoxNjYzNjgyNDA0fQ.25GPeYOf7iC7KtiDzXCkAgsa8-cIviAwXNx5XgRl8GE",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlJlemEgRmFobGV2aSBBbGhhZHkiLCJlbWFpbCI6InJlemFhbGhhZHlAZ21haWwuY29tIiwiaWF0IjoxNjYzNzY1OTQ0LCJleHAiOjE2NjM3Njk1NDR9.coJ1iXvwp7xPTzAe-_yD4ZApviWB2-Qc2OZ2wLMR3Nc",
 								"type": "text"
 							}
 						],
@@ -139,7 +139,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/patients/2",
+							"raw": "http://localhost:3000/api/patients/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -148,7 +148,7 @@
 							"path": [
 								"api",
 								"patients",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -229,7 +229,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"indeksaoda@gmail.com\",\r\n    \"password\": \"indeksaoda\"\r\n}",
+							"raw": "{\r\n    \"email\": \"anggayunanda@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -259,7 +259,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkluZGVrIiwiZW1haWwiOiJpbmRla3Nhb2RhQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY3OTI5NSwiZXhwIjoxNjYzNjgyODk1fQ.7AtR2ec7O5TM8uvq7LU0kIgJD_G-SMSY9WQnaHTYbmE",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTY2Mzc2NzI1NCwiZXhwIjoxNjYzNzcwODU0fQ.I6j435VhavdgU1-bY606pCYIDdU1BrV7UzvlShKaMOw",
 								"type": "text"
 							}
 						],
@@ -347,7 +347,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik1hZ3RoaWxkYSBTYW9kYSIsImVtYWlsIjoiaW5kZWtzYW9kYUBnbWFpbC5jb20iLCJpYXQiOjE2NjM2NzU5MDcsImV4cCI6MTY2MzY3OTUwN30._CSF4ivvOdqgWBVOVo9M0ccG4Uzx-dTVx-FCdp_PoXg",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkluZGVrIiwiZW1haWwiOiJpbmRla3Nhb2RhQGdtYWlsLmNvbSIsImlhdCI6MTY2MzczMzE4OCwiZXhwIjoxNjYzNzM2Nzg4fQ.N77c4prvdH52NnKmdS8eeRCFjqdt6fJdxabz5LijDeY",
 								"type": "text"
 							}
 						],
@@ -369,6 +369,108 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update Boking",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2MzgyOTAwMywiZXhwIjoxNjYzODMyNjAzfQ.u4-xx1jnPKUZS4GFU0rX4V9k9SYA8S4ACKG8WnISSQs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isDone\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admins/update-booking/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admins",
+								"update-booking",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Queue",
+			"item": [
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlJlemEgRmFobGV2aSBBbGhhZHkiLCJlbWFpbCI6InJlemFhbGhhZHlAZ21haWwuY29tIiwicm9sZSI6IlBhc2llbiIsImlhdCI6MTY2NDE4ODEzNCwiZXhwIjoxNjY0MTkxNzM0fQ.XLpr0mRemiPgPn1ZFQ4zkERxdE69gmSfqXrK5RVMqCw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Alex Turner\",\r\n    \"patientNIK\": \"317553112812\",\r\n    \"examinationId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/patients/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patients",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2Mzk5NTk5NCwiZXhwIjoxNjYzOTk5NTk0fQ.sJJJyKPXXTtHJ3KwlwnjQKRk48VPpsgNeI7Rqi2JWlU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/patients/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patients",
+								"booking"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -382,12 +484,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2Mzg1ODYzNSwiZXhwIjoxNjYzODYyMjM1fQ.3k10QZwXlVyBwm55RvuJRXnMhwZjLvR9RF8IMRDpxPI",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/api/doctor/1",
+							"raw": "http://localhost:3000/api/doctors/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -395,7 +497,7 @@
 							"port": "3000",
 							"path": [
 								"api",
-								"doctor",
+								"doctors",
 								"1"
 							]
 						}
@@ -404,22 +506,15 @@
 				},
 				{
 					"name": "All Doctors",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2Mzg1ODYzNSwiZXhwIjoxNjYzODYyMjM1fQ.3k10QZwXlVyBwm55RvuJRXnMhwZjLvR9RF8IMRDpxPI",
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:3000/api/doctors",
 							"protocol": "http",
@@ -436,72 +531,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Examinations Data",
-			"item": [
-				{
-					"name": "Examination By ID",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:3000/api/examination/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"examination",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "All Examinations",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/examinations",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"examinations"
-							]
-						}
-					},
-					"response": []
-				}
-			]
 		}
-
 	]
 }
