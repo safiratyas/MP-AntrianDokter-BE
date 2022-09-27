@@ -89,7 +89,7 @@ apiRouter.post("/api/patients/booking",
   controllers.api.queue.createQueue
 );
 
-apiRouter.delete("/api/patients/booking",
+apiRouter.delete("/api/destroy/booking",
   middlewares.adminAuthorization.authorize,
   controllers.api.queue.deleteAllQueue
 );
