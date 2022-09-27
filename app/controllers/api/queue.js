@@ -30,5 +30,42 @@ module.exports = {
       status: 'Success',
       message: res.message 
     })
-  }
+  },
+
+  async getQueue(req, res) {
+    try {
+      const queue = await queueServices.getOne({
+        where: {
+          id: req.params.id
+        },
+        attributes: {
+          exclude: []
+        }
+      });
+
+      if (!queue) {
+        throw new Error(`Queue with id ${req.params.id} not found!`);
+      }
+
+      res.status(200).json(queue);
+    } catch (err) {
+      res.status(404).json({
+        status: 'Failed',
+        message: err.message,
+      });
+    }
+  },
+
+  async getAllQueues(req, res) {
+    const getAll = await queueServices.list({
+      attributes: {
+        exclude: []
+      }
+    });
+
+    res.status(200).json({
+      status: 'Success',
+      data: getAll
+    });
+  },
 }
