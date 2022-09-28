@@ -16,9 +16,6 @@
       "name": "Admin"
     },
     {
-      "name": "Doctor"
-    },
-    {
       "name": "Booking"
     }
   ],
@@ -451,66 +448,6 @@
         ]
       }
     },
-    "/api/doctors/{id}": {
-      "get": {
-        "summary": "Get Doctor data By Id",
-        "description": "Retrieve doctor data by Id",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/coreDoctor"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }],
-        "tags": [
-          "Doctor"
-        ]
-      }
-    },
-    "/api/doctors": {
-      "get": {
-        "summary": "Get All Doctors",
-        "description": "Can Get Doctors, But Can not Edit and Delete",
-        "security": [{
-          "BearerTokenAuth": []
-        }],
-        "responses": {
-          "200": {
-            "description": "Berhasil ditampilkan",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/definitions/coreDoctor"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "tags": [
-          "Doctor"
-        ]
-      }
-    },
     "/api/patients/booking": {
       "post": {
         "summary": "Create Booking",
@@ -880,29 +817,6 @@
         }
       }
     },
-    "coreDoctor": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        },
-        "specialistId": {
-          "type": "integer"
-        },
-        "createdAt": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
     "coreBooking": {
       "type": "object",
       "properties": {
@@ -919,13 +833,7 @@
         "patientNIK": {
           "type": "string"
         },
-        "polyId": {
-          "type": "string"
-        },
         "examinationId": {
-          "type": "string"
-        },
-        "doctorId": {
           "type": "string"
         },
         "dateOfVisit": {

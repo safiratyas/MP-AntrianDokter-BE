@@ -5,10 +5,6 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Queues extends Model {
     static associate(models) {
-      this.belongsTo(models.Doctors, {
-        foreignKey: 'doctorId',
-        as: 'doctor',
-      });
       this.belongsTo(models.Examinations, {
         foreignKey: 'examinationId',
         as: 'examination',
@@ -17,19 +13,13 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'patientId',
         as: 'patient',
       });
-      this.belongsTo(models.Polyclinics, {
-        foreignKey: 'polyId',
-        as: 'poly',
-      });
     }
   }
   Queues.init({
     patientId: DataTypes.INTEGER,
     patientName: DataTypes.STRING,
     patientNIK: DataTypes.STRING,
-    polyId: DataTypes.INTEGER,
     examinationId: DataTypes.INTEGER,
-    doctorId: DataTypes.INTEGER,
     dateOfVisit: DataTypes.DATEONLY,
     queueNumber: DataTypes.INTEGER,
     isDone: DataTypes.BOOLEAN

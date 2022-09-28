@@ -105,20 +105,6 @@ apiRouter.get("/api/all/booking",
 );
 
 /**
- * @Doctors Resources 
- */
-
-apiRouter.get("/api/doctors/:id",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.doctors.getDoctor
-);
-
-apiRouter.get("/api/doctors",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.doctors.getAllDoctors
-);
-
-/**
  * @Examinations Resources 
  */
 
