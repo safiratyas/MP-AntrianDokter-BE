@@ -23,29 +23,11 @@ module.exports = {
       patientNIK: {
         type: Sequelize.STRING
       },
-      polyId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: "Polyclinics",
-          },
-          key: "id",
-        },
-      },
       examinationId: {
         type: Sequelize.INTEGER,
         references: {
           model: {
             tableName: "Examinations",
-          },
-          key: "id",
-        },
-      },
-      doctorId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: "Doctors",
           },
           key: "id",
         },

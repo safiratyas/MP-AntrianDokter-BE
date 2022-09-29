@@ -1,27 +1,10 @@
 const queueServices = require('../../services/queues');
+const { Examinations } = require('../../models');
 
 module.exports = {
   async createQueue(req, res) {
     try {
       const { name, patientNIK, examinationId } = req.body;
-      // const dateNow = new Date(date);
-      // const numberOfBookings = await queueServices.list();
-      // var count = 0;
-
-      // for (let i = 0; i < numberOfBookings.length; i++) {
-      //   console.log(numberOfBookings.dateOfVisit, dateNow);
-      //   if (numberOfBookings.dateOfVisit.getDay() == dateNow.getDay()) {
-      //     count++
-      //   }
-      // }
-      
-      // if (count >= 3) {
-      //   res.status(422).json({
-      //     status: 'Failed',
-      //     message: 'Full Booked'
-      //   });
-      //   return;
-      // }
 
       const booking = await queueServices.create({
         patientId: req.patient.id,
@@ -32,14 +15,7 @@ module.exports = {
         isDone: false
       })
 
-      res.status(201).json({
-        Name: booking.patientName,
-        NIK: booking.patientNIK,
-        Date: booking.dateOfVisit,
-        queueNumber: booking.queueNumber,
-        examinationId: booking.examinationId,
-        isDone: false,
-      })
+      res.status(201).json(booking);
 
     } catch (err) {
       res.status(400).json({
@@ -63,8 +39,10 @@ module.exports = {
         where: {
           id: req.params.id
         },
-        attributes: {
-          exclude: []
+        include: {
+          model: Examinations,
+          as: 'examination',
+          attributes: ['name']
         }
       });
 
@@ -82,15 +60,65 @@ module.exports = {
   },
 
   async getAllQueues(req, res) {
-    const getAll = await queueServices.list({
-      attributes: {
-        exclude: []
-      }
-    });
+    const getAll = await queueServices.list();
 
     res.status(200).json({
       status: 'Success',
       data: getAll
     });
   },
+
+  async historyAsPatient(req, res) {
+    try {
+      const historyPatient = await queueServices.listByCondition({
+        where: {
+          patientId: req.patient.id,
+        },
+        include: {
+          model: Examinations,
+          as: 'examination',
+        },
+        order: [
+          ["id", "DESC"]
+        ]
+      });
+
+      const result = historyPatient.map((history) => {
+        if (history.isDone === true) {
+          return ({
+            msg: 'Ticketing Sudah Dipakai',
+            id: history.patientId,
+            name: history.patientName,
+            NIK: history.patientNIK,
+            examination: history.examination.name,
+            queue: history.queueNumber,
+            time: history.dateOfVisit
+          })
+        } else if (history.isDone === false) {
+         return({
+          msg: 'Ticketing Belum Dipakai',
+          id: history.patientId,
+          name: history.patientName,
+          NIK: history.patientNIK,
+          examination: history.examination.name,
+          queue: history.queueNumber,
+          time: history.dateOfVisit
+         })
+        }
+   
+      })
+
+      res.status(200).json({
+        message: "Success",
+        result,
+      });
+    } catch (err) {
+      res.status(422).json({
+        error: {
+          name: err.name,
+          message: err.message,
+        }
+      });
+    }
+  }
 }

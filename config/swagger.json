@@ -16,7 +16,7 @@
       "name": "Admin"
     },
     {
-      "name": "Doctor"
+      "name": "Booking"
     }
   ],
   "consumes": [
@@ -448,15 +448,73 @@
         ]
       }
     },
-    "/api/doctors/{id}": {
-      "get": {
-        "summary": "Get Doctor data By Id",
-        "description": "Retrieve doctor data by Id",
+    "/api/patients/booking": {
+      "post": {
+        "summary": "Create Booking",
+        "description": "Create new Booking",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
+        "responses": {
+          "201": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/coreRegisterResponseAdmin"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response."
+          }
+        },
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/coreRegisterRequestAdmin"
+          }
+        }],
+        "tags": [
+          "Booking"
+        ]
+      }
+    },
+    "/api/destroys/booking": {
+      "delete": {
+        "summary": "Delete Booking",
+        "description": "Remove all existing booking",
+        "operationId": "deleteBooking",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/coreDoctor"
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Booking"
+        ]
+      }
+    },
+    "/api/bookings/{id}": {
+      "get": {
+        "summary": "Get Booking data By Id",
+        "description": "Retrieve booking data by Id",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/coreBooking"
             }
           },
           "default": {
@@ -474,14 +532,14 @@
           "format": "int64"
         }],
         "tags": [
-          "Doctor"
+          "Booking"
         ]
       }
     },
-    "/api/doctors": {
+    "/api/bookings": {
       "get": {
-        "summary": "Get All Doctors",
-        "description": "Can Get Doctors, But Can not Edit and Delete",
+        "summary": "Get All Bookings",
+        "description": "Can Get Bookings, But Can not Edit and Delete",
         "security": [{
           "BearerTokenAuth": []
         }],
@@ -491,7 +549,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/definitions/coreDoctor"
+                  "$ref": "#/definitions/coreBooking"
                 }
               }
             }
@@ -504,7 +562,7 @@
           }
         },
         "tags": [
-          "Doctor"
+          "Booking"
         ]
       }
     }
@@ -678,38 +736,6 @@
         }
       }
     },
-    "coreAdmin": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "phoneNumber": {
-          "type": "string"
-        },
-        "gender": {
-          "type": "string"
-        },
-        "createdAt": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
     "coreRegisterRequestAdmin": {
       "type": "object",
       "properties": {
@@ -791,18 +817,33 @@
         }
       }
     },
-    "coreDoctor": {
+    "coreBooking": {
       "type": "object",
       "properties": {
         "id": {
           "type": "integer",
           "format": "int64"
         },
-        "name": {
+        "patientId": {
+          "type": "integer"
+        },
+        "patientName": {
           "type": "string"
         },
-        "specialistId": {
+        "patientNIK": {
+          "type": "string"
+        },
+        "examinationId": {
+          "type": "string"
+        },
+        "dateOfVisit": {
+          "type": "string"
+        },
+        "queueNumber": {
           "type": "integer"
+        },
+        "isDone": {
+          "type": "boolean"
         },
         "createdAt": {
           "type": "string",
