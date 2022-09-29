@@ -86,28 +86,37 @@ apiRouter.get("/api/patients",
 apiRouter.post("/api/patients/booking",
   middlewares.patientAuthorization.authorize,
   middlewares.queueCondition.checkCondition,
-  controllers.api.queue.createQueue
+  controllers.api.queues.createQueue
 );
 
 apiRouter.delete("/api/destroy/booking",
   middlewares.adminAuthorization.authorize,
-  controllers.api.queue.deleteAllQueue
+  controllers.api.queues.deleteAllQueue
 );
 
 apiRouter.get("/api/bookings/:id",
   middlewares.adminAuthorization.authorize,
-  controllers.api.queue.getQueue
+  controllers.api.queues.getQueue
 );
 
 apiRouter.get("/api/bookings",
   middlewares.adminAuthorization.authorize,
-  controllers.api.queue.getAllQueues
+  controllers.api.queues.getAllQueues
 );
 
-apiRouter.get("/api/bookings/history-as-patient/:id", 
+/**
+ * @Booking History 
+ */
+
+apiRouter.put("/api/bookings/:id",
+  middlewares.adminAuthorization.authorize,
+  controllers.api.bookings.updateBooking
+);
+
+apiRouter.get("/api/bookings/history/:id",
   middlewares.patientAuthorization.authorize,
-  controllers.api.queue.historyAsPatient
-)
+  controllers.api.bookings.historyBookings
+);
 
 /**
  * @Examinations Resources 
