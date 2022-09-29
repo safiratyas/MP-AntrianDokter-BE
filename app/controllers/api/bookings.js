@@ -1,4 +1,7 @@
 const queueServices = require('../../services/queues');
+const {
+  Examinations
+} = require('../../models');
 
 module.exports = {
   async historyBookings(req, res) {

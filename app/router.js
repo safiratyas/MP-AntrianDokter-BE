@@ -89,7 +89,7 @@ apiRouter.post("/api/patients/booking",
   controllers.api.queues.createQueue
 );
 
-apiRouter.delete("/api/destroy/booking",
+apiRouter.delete("/api/destroys/booking",
   middlewares.adminAuthorization.authorize,
   controllers.api.queues.deleteAllQueue
 );
@@ -108,7 +108,7 @@ apiRouter.get("/api/bookings",
  * @Booking History 
  */
 
-apiRouter.put("/api/bookings/:id",
+apiRouter.put("/api/bookings/:id/detail",
   middlewares.adminAuthorization.authorize,
   controllers.api.bookings.updateBooking
 );

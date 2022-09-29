@@ -459,7 +459,7 @@
           "201": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/coreRegisterResponseAdmin"
+              "$ref": "#/definitions/coreResponseBooking"
             }
           },
           "default": {
@@ -471,7 +471,7 @@
           "in": "body",
           "required": true,
           "schema": {
-            "$ref": "#/definitions/coreRegisterRequestAdmin"
+            "$ref": "#/definitions/coreRequestBooking"
           }
         }],
         "tags": [
@@ -806,6 +806,58 @@
         },
         "gender": {
           "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "coreRequestBooking": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "patientNIK": {
+          "type": "string"
+        },
+        "examinationId": {
+          "type": "integer"
+        }
+      }
+    },
+    "coreResponseBooking": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "patientId": {
+          "type": "integer"
+        },
+        "patientName": {
+          "type": "string"
+        },
+        "patientNIK": {
+          "type": "string"
+        },
+        "examinationId": {
+          "type": "integer"
+        },
+        "dateOfVisit": {
+          "type": "string"
+        },
+        "isDone": {
+          "type": "string"
+        },
+        "queueNumber": {
+          "type": "integer"
         },
         "createdAt": {
           "type": "string",
