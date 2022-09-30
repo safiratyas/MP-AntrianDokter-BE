@@ -55,7 +55,7 @@ module.exports = {
         },
       });
 
-      if(!patient) {
+      if (!patient) {
         res.status(404).json({
           status: 'Failed',
           message: 'Email Not Found!'
@@ -65,7 +65,7 @@ module.exports = {
 
       const isPasswordCorrect = await checkPassword(password, patient.password);
 
-      if(!isPasswordCorrect) {
+      if (!isPasswordCorrect) {
         res.status(401).json({
           status: 'Failed',
           message: 'Password is incorrect!'
@@ -142,10 +142,29 @@ module.exports = {
         message: err.message,
       });
     }
-  }, 
+  },
 
   async whoAmI(req, res) {
-    res.status(200).json(req.patient);
+    try {
+      res.status(200).json({
+        id: req.patient.id,
+        name: req.patient.name,
+        email: req.patient.email,
+        dateOfBirth: req.patient.dateOfBirth,
+        address: req.patient.address,
+        gender: req.patient.gender,
+        BPJS: req.patient.BPJS,
+        NIK: req.patient.NIK,
+        phoneNumber: req.patient.phoneNumber,
+        createdAt: req.patient.createdAt,
+        updatedAt: req.patient.updatedAt
+      });
+    } catch (err) {
+      res.status(404).json({
+        status: 'Failed',
+        message: err.message,
+      });
+    }
   },
 
   async getPatient(req, res) {
