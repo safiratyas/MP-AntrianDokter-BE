@@ -5,6 +5,7 @@ const {
 
 module.exports = {
   async historyBookings(req, res) {
+    console.log(req.body);
     try {
       const historyPatient = await queueServices.listByCondition({
         where: {
@@ -43,6 +44,17 @@ module.exports = {
         }
       });
 
+      const id = req.params.id;
+      const compareId = id.toString() === req.patient.id.toString();
+
+      if (!compareId) {
+        res.status(401).json({
+          status: 'Failed',
+          message: 'Canott see other people booking history'
+        });
+        return;
+      }
+      
       res.status(200).json({
         message: "Success",
         result,
@@ -66,12 +78,6 @@ module.exports = {
       await queueServices.update(req.params.id, {
         isDone,
       });
-
-      if (!isDone) {
-        await queueServices.update(req.params.id, {
-          isDone: false
-        })
-      }
 
       res.status(201).json({
         status: "Success",
