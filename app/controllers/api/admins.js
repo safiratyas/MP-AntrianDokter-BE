@@ -17,7 +17,6 @@ module.exports = {
         email: req.body.email.toLowerCase(),
         password: encryptedPassword,
         gender: req.body.gender,
-        image: null,
         phoneNumber: req.body.phoneNumber,
       });
 
@@ -26,7 +25,6 @@ module.exports = {
         name: admin.name,
         email: admin.email,
         gender: admin.gender,
-        image: admin.image,
         phoneNumber: admin.phoneNumber,
         createdAt: admin.createdAt,
         updatedAt: admin.updatedAt
@@ -97,7 +95,6 @@ module.exports = {
     try {
       const {
         name,
-        image,
         phoneNumber,
         gender
       } = req.body;
@@ -115,7 +112,6 @@ module.exports = {
 
       const update = await adminServices.update(req.params.id, {
         name,
-        image,
         phoneNumber,
         gender,
       });

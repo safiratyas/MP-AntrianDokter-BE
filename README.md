@@ -36,12 +36,9 @@ Queues :
 ✔️Get BookingId (with Token Admins)
 ✔️Put UpdateBookingId (with Token Admins)
 ✔️Get AllBookings (with Token Admins)
+✔️Get HistoryPatient (with Token Patient)
 ```
-Doctors :
-```
-✔️Get DoctorsId (with Token)
-✔️Get AllDoctors (with Token)
-```
+
 Examinations :
 ```
 ✔️Get ExaminationsId (with Token)

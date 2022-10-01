@@ -1,5 +1,4 @@
 const patientServices = require('../../services/patients');
-const { Doctors } = require('../../models')
 const {
   checkPassword,
   createToken,
@@ -20,7 +19,6 @@ module.exports = {
         dateOfBirth: req.body.dateOfBirth,
         address: req.body.address,
         gender: req.body.gender,
-        image: null,
         BPJS: req.body.BPJS || null,
         NIK: req.body.NIK,
         phoneNumber: req.body.phoneNumber,
@@ -33,7 +31,6 @@ module.exports = {
         dateOfBirth: patient.dateOfBirth,
         address: patient.address,
         gender: patient.gender,
-        image: patient.image,
         BPJS: patient.BPJS,
         NIK: patient.NIK,
         phoneNumber: patient.phoneNumber,
@@ -110,7 +107,6 @@ module.exports = {
         dateOfBirth,
         address,
         gender,
-        image,
         NIK,
         BPJS,
         phoneNumber
@@ -132,7 +128,6 @@ module.exports = {
         dateOfBirth,
         address,
         gender,
-        image,
         NIK,
         BPJS,
         phoneNumber,

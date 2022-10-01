@@ -565,6 +565,88 @@
           "Booking"
         ]
       }
+    },
+    "/api/bookings/history/{id}": {
+      "get": {
+        "summary": "Get All Bookings History",
+        "description": "Can Get Bookings History, But Can not Edit and Delete",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
+        "responses": {
+          "200": {
+            "description": "Berhasil ditampilkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/coreBooking"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "tags": [
+          "Booking"
+        ]
+      }
+    },
+    "/api/bookings/{id}/detail": {
+      "put": {
+        "summary": "Update Booking",
+        "description": "Update Booking",
+        "operationId": "updateBooking",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
+        "responses": {
+          "200": {
+            "description": "A successful response."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "isDone": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Booking"
+        ]
+      }
     }
   },
   "definitions": {
