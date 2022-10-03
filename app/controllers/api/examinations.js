@@ -13,7 +13,7 @@ module.exports = {
           });
     
           if (!examinations) {
-            throw new Error(`Examinations with id ${req.params.id} not found!`);
+            throw new Error(`Jenis pengecekan dengan ID ${req.params.id} tidak ditemukan!`);
           }
     
           res.status(200).json(examinations);
@@ -33,7 +33,7 @@ module.exports = {
         });
     
         res.status(200).json({
-          status: "success",
+          status: "Success",
           data: getAll
         });
       },
