@@ -1,4 +1,5 @@
 const queueServices = require('../../services/queues');
+
 const {
   Examinations
 } = require('../../models');
@@ -50,11 +51,11 @@ module.exports = {
       if (!compareId) {
         res.status(401).json({
           status: 'Failed',
-          message: 'Canott see other people booking history'
+          message: 'Cannot see other people booking history'
         });
         return;
       }
-      
+
       res.status(200).json({
         message: "Success",
         result,
@@ -69,28 +70,22 @@ module.exports = {
     }
   },
 
-  async updateBooking(req, res) {
+  async updateBookingPatient(req, res) {
     try {
-      const {
+      const { isDone } = req.body;
+      const update = await queueServices.update(req.params.bookingId, {
         isDone
-      } = req.body;
-
-      await queueServices.update(req.params.id, {
-        isDone,
       });
 
-      res.status(201).json({
-        status: "Success",
-        message: `Booking with id ${req.params.id} has been done.`,
+      res.status(200).json({
+        status: 'OK',
+        message: `Patient with bookingId ${req.params.bookingId} has done for checking.`,
       });
-
     } catch (err) {
       res.status(422).json({
-        error: {
-          name: err.name,
-          message: err.message,
-        }
-      });
+        error: err.name,
+        message: err.message
+      })
     }
-  }
+  },
 }

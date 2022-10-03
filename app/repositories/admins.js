@@ -3,18 +3,6 @@ const {
 } = require("../models");
 
 module.exports = {
-  create(inputData) {
-    return Admins.create(inputData);
-  },
-
-  update(id, updateData) {
-    return Admins.update(updateData, {
-      where: {
-        id
-      }
-    });
-  },
-
   find(id) {
     return Admins.findByPk(id);
   },

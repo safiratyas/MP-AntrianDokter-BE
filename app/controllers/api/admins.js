@@ -7,38 +7,6 @@ const {
 } = require('../../plugin');
 
 module.exports = {
-  async register(req, res) {
-    try {
-      const password = req.body.password;
-      const encryptedPassword = await hashPassword(password, 10);
-
-      const admin = await adminServices.create({
-        name: req.body.name,
-        email: req.body.email.toLowerCase(),
-        password: encryptedPassword,
-        gender: req.body.gender,
-        image: null,
-        phoneNumber: req.body.phoneNumber,
-      });
-
-      res.status(201).json({
-        id: admin.id,
-        name: admin.name,
-        email: admin.email,
-        gender: admin.gender,
-        image: admin.image,
-        phoneNumber: admin.phoneNumber,
-        createdAt: admin.createdAt,
-        updatedAt: admin.updatedAt
-      });
-    } catch (err) {
-      res.status(400).json({
-        status: 'Failed',
-        message: err.message
-      });
-    }
-  },
-
   async login(req, res) {
     try {
       const email = req.body.email.toLowerCase();
@@ -93,66 +61,8 @@ module.exports = {
     }
   },
 
-  async updateDetail(req, res) {
-    try {
-      const {
-        name,
-        image,
-        phoneNumber,
-        gender
-      } = req.body;
-
-      const id = req.params.id;
-      const compareId = id.toString() === req.admin.id.toString();
-
-      if (!compareId) {
-        res.status(401).json({
-          status: 'Failed',
-          message: 'Admin who can edit or delete admin data is him/herself.'
-        });
-        return;
-      }
-
-      const update = await adminServices.update(req.params.id, {
-        name,
-        image,
-        phoneNumber,
-        gender,
-      });
-
-      res.status(200).json({
-        status: 'OK',
-        message: `Patient with id ${req.params.id} has been updated.`,
-      });
-    } catch (err) {
-      res.status(422).json({
-        status: 'Failed',
-        message: err.message,
-      });
-    }
-  },
-
   async whoAmI(req, res) {
     res.status(200).json(req.admin);
-  },
-
-  async updateBookingPatient(req, res){
-    try {
-      const { isDone } = req.body;
-      const update = await queueServices.update(req.params.bookingId, {
-        isDone
-      });
-
-      res.status(200).json({
-        status: 'OK',
-        message: `Patient with bookingId ${req.params.bookingId} has done for checking.`,
-      });
-    } catch (err) {
-      res.status(422).json({
-        error: err.name,
-        message: err.message
-      })
-    }
   },
 
   async getAllQueue(req, res){

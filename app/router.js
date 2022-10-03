@@ -13,11 +13,6 @@ apiRouter.get("/", controllers.api.application.getRoot);
  * @Admin Resources 
  */
 
-apiRouter.post("/api/admins/register",
-  middlewares.adminCondition.checkCondition,
-  controllers.api.admins.register
-);
-
 apiRouter.post("/api/admins/login",
   controllers.api.admins.login
 );
@@ -25,16 +20,6 @@ apiRouter.post("/api/admins/login",
 apiRouter.get("/api/admins/who-am-i",
   middlewares.adminAuthorization.authorize,
   controllers.api.admins.whoAmI
-);
-
-apiRouter.put("/api/admins/update-booking/:bookingId",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.admins.updateBookingPatient
-);
-
-apiRouter.put("/api/admins/:id/detail",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.admins.updateDetail
 );
 
 apiRouter.get("/api/admins/:id",
@@ -108,10 +93,11 @@ apiRouter.get("/api/bookings",
  * @Booking History 
  */
 
-apiRouter.put("/api/bookings/:id/detail",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.bookings.updateBooking
+ apiRouter.put("/api/admins/update-booking/:bookingId",
+ middlewares.adminAuthorization.authorize,
+ controllers.api.bookings.updateBookingPatient
 );
+
 
 apiRouter.get("/api/bookings/history/:id",
   middlewares.patientAuthorization.authorize,
