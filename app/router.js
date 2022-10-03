@@ -54,6 +54,11 @@ apiRouter.put("/api/patients/:id/detail",
   controllers.api.patients.updateDetail
 );
 
+apiRouter.delete("/api/patients/:id/destroy",
+  middlewares.patientAuthorization.authorize,
+  controllers.api.patients.deletePatient
+);
+
 apiRouter.get("/api/patients/:id",
   middlewares.adminAuthorization.authorize,
   controllers.api.patients.getPatient

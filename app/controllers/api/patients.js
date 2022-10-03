@@ -144,6 +144,49 @@ module.exports = {
     }
   },
 
+  async deletePatient(req, res) {
+    try {
+      const id = req.params.id;
+      const patient = await patientServices.getOne({
+        where: {
+          id,
+        }
+      });
+
+      if(!patient) {
+        res.status(404).json({
+          status: 'Failed',
+          message: `Pasien dengan ID ${id} tidak ditemukan!`,
+        });
+        return;
+      }
+
+      const comparePatientId = req.patient.id === patient.id;
+
+      if(!comparePatientId) {
+        res.status(404).json({
+          status: 'Unauthorized',
+          message: 'Pasien hanya bisa menghapus data dia sendiri!'
+        });
+        return;
+      }
+
+      const destroy = await patientServices.delete(id);
+      res.status(200).json({
+        status: 'OK',
+        message: `Pasien dengan ID ${id} berhasil dihapus`,
+      });
+
+    } catch (err) {
+      res.status(400).json({
+        error: {
+          name: err.name,
+          message: err.message,
+        }
+      });
+    }
+  },
+
   async whoAmI(req, res) {
     try {
       res.status(200).json({
