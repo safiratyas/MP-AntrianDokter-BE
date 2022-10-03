@@ -1,5 +1,5 @@
 const queueServices = require('../../services/queues');
-
+const timeFormat = require ('../../utils/timeFormat');
 const {
   Examinations
 } = require('../../models');
@@ -24,23 +24,23 @@ module.exports = {
       const result = historyPatient.map((history) => {
         if (history.isDone === true) {
           return ({
-            msg: 'Ticketing Sudah Dipakai',
+            msg: 'Tiket Sudah Dipakai',
             id: history.patientId,
             name: history.patientName,
             NIK: history.patientNIK,
             examination: history.examination.name,
             queue: history.queueNumber,
-            time: history.dateOfVisit
+            time: timeFormat(history.dateOfVisit)
           })
         } else if (history.isDone === false) {
           return ({
-            msg: 'Ticketing Belum Dipakai',
+            msg: 'Tiket Belum Dipakai',
             id: history.patientId,
             name: history.patientName,
             NIK: history.patientNIK,
             examination: history.examination.name,
             queue: history.queueNumber,
-            time: history.dateOfVisit
+            time: timeFormat(history.dateOfVisit)
           })
         }
       });
@@ -51,7 +51,7 @@ module.exports = {
       if (!compareId) {
         res.status(401).json({
           status: 'Failed',
-          message: 'Cannot see other people booking history'
+          message: 'Tidak bisa melihat riwayat tiket orang lain!'
         });
         return;
       }
@@ -79,7 +79,7 @@ module.exports = {
 
       res.status(200).json({
         status: 'OK',
-        message: `Patient with bookingId ${req.params.bookingId} has done for checking.`,
+        message: `Pasien dengan ID tiket ${req.params.bookingId} telah selesai.`,
       });
     } catch (err) {
       res.status(422).json({

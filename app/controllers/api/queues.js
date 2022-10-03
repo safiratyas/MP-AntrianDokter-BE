@@ -53,7 +53,7 @@ module.exports = {
       });
 
       if (!queue) {
-        throw new Error(`Queue with id ${req.params.id} not found!`);
+        throw new Error(`Antrian dengan ID ${req.params.id} tidak ditemukan!`);
       }
 
       res.status(200).json(queue);

@@ -2,8 +2,7 @@ const adminServices = require('../../services/admins');
 const queueServices = require('../../services/queues');
 const {
   checkPassword,
-  createToken,
-  hashPassword
+  createToken
 } = require('../../plugin');
 
 module.exports = {
@@ -21,7 +20,7 @@ module.exports = {
       if (!admin) {
         res.status(404).json({
           status: "Failed",
-          message: "Email not found!"
+          message: "Email tidak ditemukan!"
         });
         return;
       }
@@ -31,7 +30,7 @@ module.exports = {
       if (!isPasswordCorrect) {
         res.status(401).json({
           status: "Failed",
-          message: "Password is incorrect!"
+          message: "Password salah!"
         });
         return;
       }
@@ -62,7 +61,22 @@ module.exports = {
   },
 
   async whoAmI(req, res) {
-    res.status(200).json(req.admin);
+    try {
+      res.status(200).json({
+        id: req.admin.id,
+        name: req.admin.name,
+        email: req.admin.email,
+        phoneNumber: req.admin.phoneNumber,
+        gender: req.admin.gender,
+        createdAt: req.admin.createdAt,
+        updatedAt: req.admin.updatedAt
+      });
+    } catch (err) {
+      res.status(404).json({
+        status: 'Failed',
+        message: err.message,
+      });
+    }
   },
 
   async getAllQueue(req, res){
@@ -86,7 +100,7 @@ module.exports = {
       });
 
       if (!admin) {
-        throw new Error(`Admin with id ${req.params.id} not found!`);
+        throw new Error(`Admin dengan ID ${req.params.id} tidak ditemukan!`);
       }
 
       res.status(200).json(admin);

@@ -58,7 +58,7 @@ module.exports = {
       if (!patient) {
         res.status(404).json({
           status: 'Failed',
-          message: 'Email Not Found!'
+          message: 'Email Tidak Ditemukan!'
         });
         return;
       }
@@ -68,7 +68,7 @@ module.exports = {
       if (!isPasswordCorrect) {
         res.status(401).json({
           status: 'Failed',
-          message: 'Password is incorrect!'
+          message: 'Password Salah!'
         });
         return;
       }
@@ -117,7 +117,7 @@ module.exports = {
       if (!compareId) {
         res.status(401).json({
           status: 'Failed',
-          message: 'Patient who can edit or delete patient data is him/herself.'
+          message: 'Pasien hanya bisa edit data sesuai dengan ID pasien tersebut.'
         });
         return;
       }
@@ -134,7 +134,7 @@ module.exports = {
 
       res.status(200).json({
         status: 'OK',
-        message: `Patient with id ${req.params.id} has been updated.`,
+        message: `Pasien dengan ID ${req.params.id} telah berhasil diperbarui.`,
       });
     } catch (err) {
       res.status(422).json({
@@ -179,7 +179,7 @@ module.exports = {
       });
 
       if (!patient) {
-        throw new Error(`Patient with id ${req.params.id} not found!`);
+        throw new Error(`Pasien dengan ID ${req.params.id} tidak ditemukan!`);
       }
 
       res.status(200).json(patient);

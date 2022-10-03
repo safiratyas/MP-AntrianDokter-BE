@@ -117,7 +117,7 @@ module.exports = {
       if (uniqueBPJS) {
         res.status(409).json({
           status: 'Failed',
-          message: 'BPJS already taken!'
+          message: 'BPJS sudah terdaftar!'
         });
         return;
       }
