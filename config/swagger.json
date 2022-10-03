@@ -184,10 +184,47 @@
         ]
       }
     },
+    "/api/patients/{id}/destroy": {
+      "delete": {
+        "summary": "Delete Patient",
+        "description": "Remove existing patient by ID",
+        "operationId": "deletePatient",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "tags": [
+          "Patient"
+        ]
+      }
+    },
     "/api/patients/{id}": {
       "get": {
         "summary": "Get Patient data By Id",
         "description": "Retrieve patient data by Id",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
         "responses": {
           "200": {
             "description": "A successful response.",
