@@ -80,12 +80,12 @@ apiRouter.post("/api/patients/booking",
 );
 
 apiRouter.get("/api/bookings/:id",
-  middlewares.patientAuthorization.authorize,
+  middlewares.patientAuthorization.authorize || middlewares.adminAuthorization.authorize,
   controllers.api.queues.getQueue
 );
 
 apiRouter.get("/api/bookings",
-  middlewares.patientAuthorization.authorize,
+  middlewares.patientAuthorization.authorize || middlewares.adminAuthorization.authorize,
   controllers.api.queues.getAllQueues
 );
 
