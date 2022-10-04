@@ -79,19 +79,19 @@ apiRouter.post("/api/patients/booking",
   controllers.api.queues.createQueue
 );
 
-apiRouter.delete("/api/destroys/booking",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.queues.deleteAllQueue
-);
-
 apiRouter.get("/api/bookings/:id",
-  middlewares.adminAuthorization.authorize,
+  middlewares.patientAuthorization.authorize,
   controllers.api.queues.getQueue
 );
 
 apiRouter.get("/api/bookings",
-  middlewares.adminAuthorization.authorize,
+  middlewares.patientAuthorization.authorize,
   controllers.api.queues.getAllQueues
+);
+
+apiRouter.delete("/api/destroys/booking",
+  middlewares.adminAuthorization.authorize,
+  controllers.api.queues.deleteAllQueue
 );
 
 /**
@@ -102,7 +102,6 @@ apiRouter.get("/api/bookings",
  middlewares.adminAuthorization.authorize,
  controllers.api.bookings.updateBookingPatient
 );
-
 
 apiRouter.get("/api/bookings/history/:id",
   middlewares.patientAuthorization.authorize,
