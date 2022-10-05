@@ -13,11 +13,6 @@ apiRouter.get("/", controllers.api.application.getRoot);
  * @Admin Resources 
  */
 
-apiRouter.post("/api/admins/register",
-  middlewares.adminCondition.checkCondition,
-  controllers.api.admins.register
-);
-
 apiRouter.post("/api/admins/login",
   controllers.api.admins.login
 );
@@ -25,16 +20,6 @@ apiRouter.post("/api/admins/login",
 apiRouter.get("/api/admins/who-am-i",
   middlewares.adminAuthorization.authorize,
   controllers.api.admins.whoAmI
-);
-
-apiRouter.put("/api/admins/update-booking/:bookingId",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.admins.updateBookingPatient
-);
-
-apiRouter.put("/api/admins/:id/detail",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.admins.updateDetail
 );
 
 apiRouter.get("/api/admins/:id",
@@ -69,6 +54,11 @@ apiRouter.put("/api/patients/:id/detail",
   controllers.api.patients.updateDetail
 );
 
+apiRouter.delete("/api/patients/:id/destroy",
+  middlewares.patientAuthorization.authorize,
+  controllers.api.patients.deletePatient
+);
+
 apiRouter.get("/api/patients/:id",
   middlewares.adminAuthorization.authorize,
   controllers.api.patients.getPatient
@@ -86,36 +76,37 @@ apiRouter.get("/api/patients",
 apiRouter.post("/api/patients/booking",
   middlewares.patientAuthorization.authorize,
   middlewares.queueCondition.checkCondition,
-  controllers.api.queue.createQueue
+  controllers.api.queues.createQueue
 );
 
-apiRouter.delete("/api/patients/booking",
+apiRouter.delete("/api/destroys/booking",
   middlewares.adminAuthorization.authorize,
-  controllers.api.queue.deleteAllQueue
+  controllers.api.queues.deleteAllQueue
 );
 
 apiRouter.get("/api/bookings/:id",
   middlewares.adminAuthorization.authorize,
-  controllers.api.queue.getQueue
+  controllers.api.queues.getQueue
 );
 
 apiRouter.get("/api/bookings",
   middlewares.adminAuthorization.authorize,
-  controllers.api.queue.getAllQueues
+  controllers.api.queues.getAllQueues
 );
 
 /**
- * @Doctors Resources 
+ * @Booking History 
  */
 
-apiRouter.get("/api/doctors/:id",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.doctors.getDoctor
+ apiRouter.put("/api/admins/update-booking/:bookingId",
+ middlewares.adminAuthorization.authorize,
+ controllers.api.bookings.updateBookingPatient
 );
 
-apiRouter.get("/api/doctors",
-  middlewares.adminAuthorization.authorize,
-  controllers.api.doctors.getAllDoctors
+
+apiRouter.get("/api/bookings/history/:id",
+  middlewares.patientAuthorization.authorize,
+  controllers.api.bookings.historyBookings
 );
 
 /**
@@ -125,6 +116,15 @@ apiRouter.get("/api/doctors",
 apiRouter.get("/api/examinations",
   // middlewares.adminAuthorization.authorize,
   controllers.api.examinations.getAllExamination
+);
+
+/**
+ * @Notifications Resources 
+ */
+
+apiRouter.get("/api/notifications",
+middlewares.adminAuthorization.authorize,
+controllers.api.notifications.getAllNotification
 );
 
 /**

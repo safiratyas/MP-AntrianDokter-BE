@@ -1,10 +1,17 @@
 const queueServices = require('../../services/queues');
+const {
+  Examinations
+} = require('../../models');
 
 module.exports = {
   async createQueue(req, res) {
     try {
-      const { name, patientNIK, examinationId } = req.body;
-  
+      const {
+        name,
+        patientNIK,
+        examinationId
+      } = req.body;
+
       const booking = await queueServices.create({
         patientId: req.patient.id,
         patientName: req.body.name,
@@ -28,7 +35,7 @@ module.exports = {
     const deleteQueue = await queueServices.deleteAll();
     res.status(200).json({
       status: 'Success',
-      message: res.message 
+      message: res.message
     })
   },
 
@@ -38,10 +45,15 @@ module.exports = {
         where: {
           id: req.params.id
         },
+        include: {
+          model: Examinations,
+          as: 'examination',
+          attributes: ['name']
+        }
       });
 
       if (!queue) {
-        throw new Error(`Queue with id ${req.params.id} not found!`);
+        throw new Error(`Antrian dengan ID ${req.params.id} tidak ditemukan!`);
       }
 
       res.status(200).json(queue);

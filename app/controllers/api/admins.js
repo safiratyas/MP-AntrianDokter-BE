@@ -2,43 +2,10 @@ const adminServices = require('../../services/admins');
 const queueServices = require('../../services/queues');
 const {
   checkPassword,
-  createToken,
-  hashPassword
+  createToken
 } = require('../../plugin');
 
 module.exports = {
-  async register(req, res) {
-    try {
-      const password = req.body.password;
-      const encryptedPassword = await hashPassword(password, 10);
-
-      const admin = await adminServices.create({
-        name: req.body.name,
-        email: req.body.email.toLowerCase(),
-        password: encryptedPassword,
-        gender: req.body.gender,
-        image: null,
-        phoneNumber: req.body.phoneNumber,
-      });
-
-      res.status(201).json({
-        id: admin.id,
-        name: admin.name,
-        email: admin.email,
-        gender: admin.gender,
-        image: admin.image,
-        phoneNumber: admin.phoneNumber,
-        createdAt: admin.createdAt,
-        updatedAt: admin.updatedAt
-      });
-    } catch (err) {
-      res.status(400).json({
-        status: 'Failed',
-        message: err.message
-      });
-    }
-  },
-
   async login(req, res) {
     try {
       const email = req.body.email.toLowerCase();
@@ -53,7 +20,7 @@ module.exports = {
       if (!admin) {
         res.status(404).json({
           status: "Failed",
-          message: "Email not found!"
+          message: "Email tidak ditemukan!"
         });
         return;
       }
@@ -63,7 +30,7 @@ module.exports = {
       if (!isPasswordCorrect) {
         res.status(401).json({
           status: "Failed",
-          message: "Password is incorrect!"
+          message: "Password salah!"
         });
         return;
       }
@@ -93,65 +60,22 @@ module.exports = {
     }
   },
 
-  async updateDetail(req, res) {
+  async whoAmI(req, res) {
     try {
-      const {
-        name,
-        image,
-        phoneNumber,
-        gender
-      } = req.body;
-
-      const id = req.params.id;
-      const compareId = id.toString() === req.admin.id.toString();
-
-      if (!compareId) {
-        res.status(401).json({
-          status: 'Failed',
-          message: 'Admin who can edit or delete admin data is him/herself.'
-        });
-        return;
-      }
-
-      const update = await adminServices.update(req.params.id, {
-        name,
-        image,
-        phoneNumber,
-        gender,
-      });
-
       res.status(200).json({
-        status: 'OK',
-        message: `Patient with id ${req.params.id} has been updated.`,
+        id: req.admin.id,
+        name: req.admin.name,
+        email: req.admin.email,
+        phoneNumber: req.admin.phoneNumber,
+        gender: req.admin.gender,
+        createdAt: req.admin.createdAt,
+        updatedAt: req.admin.updatedAt
       });
     } catch (err) {
-      res.status(422).json({
+      res.status(404).json({
         status: 'Failed',
         message: err.message,
       });
-    }
-  },
-
-  async whoAmI(req, res) {
-    res.status(200).json(req.admin);
-  },
-
-  async updateBookingPatient(req, res){
-    try {
-      const { isDone } = req.body;
-      const update = await queueServices.update(req.params.bookingId, {
-        isDone
-      });
-
-      res.status(200).json({
-        status: 'OK',
-        message: `Patient with bookingId ${req.params.bookingId} has done for checking.`,
-      });
-    } catch (err) {
-      res.status(422).json({
-        error: err.name,
-        message: err.message
-      })
     }
   },
 
@@ -176,7 +100,7 @@ module.exports = {
       });
 
       if (!admin) {
-        throw new Error(`Admin with id ${req.params.id} not found!`);
+        throw new Error(`Admin dengan ID ${req.params.id} tidak ditemukan!`);
       }
 
       res.status(200).json(admin);

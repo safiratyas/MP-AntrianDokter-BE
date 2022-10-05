@@ -3,7 +3,7 @@ name: MediQ-BE-Deployment
 on:
   push:
     branches:
-      - mp-safira
+      - main
 
 jobs:
   build:
