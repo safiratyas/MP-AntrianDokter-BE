@@ -4,7 +4,6 @@ const {
   createToken,
   hashPassword
 } = require('../../plugin');
-const queue = require('./queue');
 
 module.exports = {
   async register(req, res) {
@@ -56,20 +55,20 @@ module.exports = {
         },
       });
 
-      if(!patient) {
+      if (!patient) {
         res.status(404).json({
           status: 'Failed',
-          message: 'Email Not Found!'
+          message: 'Email Tidak Ditemukan!'
         });
         return;
       }
 
       const isPasswordCorrect = await checkPassword(password, patient.password);
 
-      if(!isPasswordCorrect) {
+      if (!isPasswordCorrect) {
         res.status(401).json({
           status: 'Failed',
-          message: 'Password is incorrect!'
+          message: 'Password Salah!'
         });
         return;
       }
@@ -118,7 +117,7 @@ module.exports = {
       if (!compareId) {
         res.status(401).json({
           status: 'Failed',
-          message: 'Patient who can edit or delete patient data is him/herself.'
+          message: 'Pasien hanya bisa edit data sesuai dengan ID pasien tersebut.'
         });
         return;
       }
@@ -135,7 +134,7 @@ module.exports = {
 
       res.status(200).json({
         status: 'OK',
-        message: `Patient with id ${req.params.id} has been updated.`,
+        message: `Pasien dengan ID ${req.params.id} telah berhasil diperbarui.`,
       });
     } catch (err) {
       res.status(422).json({
@@ -143,10 +142,72 @@ module.exports = {
         message: err.message,
       });
     }
-  }, 
+  },
+
+  async deletePatient(req, res) {
+    try {
+      const id = req.params.id;
+      const patient = await patientServices.getOne({
+        where: {
+          id,
+        }
+      });
+
+      if(!patient) {
+        res.status(404).json({
+          status: 'Failed',
+          message: `Pasien dengan ID ${id} tidak ditemukan!`,
+        });
+        return;
+      }
+
+      const comparePatientId = req.patient.id === patient.id;
+
+      if(!comparePatientId) {
+        res.status(404).json({
+          status: 'Unauthorized',
+          message: 'Pasien hanya bisa menghapus data dia sendiri!'
+        });
+        return;
+      }
+
+      const destroy = await patientServices.delete(id);
+      res.status(200).json({
+        status: 'OK',
+        message: `Pasien dengan ID ${id} berhasil dihapus`,
+      });
+
+    } catch (err) {
+      res.status(400).json({
+        error: {
+          name: err.name,
+          message: err.message,
+        }
+      });
+    }
+  },
 
   async whoAmI(req, res) {
-    res.status(200).json(req.patient);
+    try {
+      res.status(200).json({
+        id: req.patient.id,
+        name: req.patient.name,
+        email: req.patient.email,
+        dateOfBirth: req.patient.dateOfBirth,
+        address: req.patient.address,
+        gender: req.patient.gender,
+        BPJS: req.patient.BPJS,
+        NIK: req.patient.NIK,
+        phoneNumber: req.patient.phoneNumber,
+        createdAt: req.patient.createdAt,
+        updatedAt: req.patient.updatedAt
+      });
+    } catch (err) {
+      res.status(404).json({
+        status: 'Failed',
+        message: err.message,
+      });
+    }
   },
 
   async getPatient(req, res) {
@@ -161,7 +222,7 @@ module.exports = {
       });
 
       if (!patient) {
-        throw new Error(`Patient with id ${req.params.id} not found!`);
+        throw new Error(`Pasien dengan ID ${req.params.id} tidak ditemukan!`);
       }
 
       res.status(200).json(patient);

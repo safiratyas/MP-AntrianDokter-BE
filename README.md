@@ -22,10 +22,8 @@ Patient :
 Admins :
 ```
 ✔️Post Login (with Token)
-✔️Post Register
 ✔️Get Whoami (with Token)
 ✔️Put UpdateBookingId (with Token)
-✔️Put Detail Admins (with Token)
 ✔️Get AdminsId (with Token Admins)
 ✔️Get AllAdmins (with Token Admins)
 ```
@@ -37,6 +35,11 @@ Queues :
 ✔️Put UpdateBookingId (with Token Admins)
 ✔️Get AllBookings (with Token Admins)
 ✔️Get HistoryPatient (with Token Patient)
+```
+
+Notifications :
+```
+✔️Get AllNotifications (with Token)
 ```
 
 Examinations :
