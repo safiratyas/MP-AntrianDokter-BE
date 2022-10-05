@@ -19,10 +19,12 @@ module.exports = {
         examinationId: parseInt(examinationId),
         dateOfVisit: new Date(),
         isDone: false
-      })
-
-      res.status(201).json(booking);
-
+      });
+      
+      res.status(201).json({
+        message: "Success",
+        booking,
+      });
     } catch (err) {
       res.status(400).json({
         error: err.name,
