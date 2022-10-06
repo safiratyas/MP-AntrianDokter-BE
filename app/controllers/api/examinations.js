@@ -16,17 +16,22 @@ module.exports = {
   
   async getExaminations(req, res) {
     try {
-      const examination = examinationsServices.get({
+      const examinations = await examinationsServices.getOne({
         where: {
-          id
-        }
+          id: req.params.id
+        },
       });
-      res.status(200).json(examination);
+
+      if (!examinations) {
+        throw new Error(`Jenis pengecekan dengan ID ${req.params.id} tidak ditemukan!`);
+      }
+
+      res.status(200).json(examinations);
     } catch (err) {
       res.status(404).json({
         status: 'Failed',
-        message: err.message
-      })
+        message: err.message,
+      });
     }
-  }
+  },
 };
