@@ -123,6 +123,15 @@ apiRouter.get("/api/examinations/:id",
 );
 
 /**
+ * @Notifications Resources 
+ */
+
+apiRouter.get("/api/notifications",
+middlewares.adminAuthorization.authorize,
+controllers.api.notifications.getAllNotification
+);
+
+/**
  * @API Documentation
  */
 

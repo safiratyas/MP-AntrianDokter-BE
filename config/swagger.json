@@ -465,6 +465,9 @@
       "get": {
         "summary": "Get Booking data By Id",
         "description": "Retrieve booking data by Id",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -495,6 +498,118 @@
       "get": {
         "summary": "Get All Bookings",
         "description": "Can Get Bookings, But Can not Edit and Delete",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
+        "responses": {
+          "200": {
+            "description": "Berhasil ditampilkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/coreBooking"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Booking"
+        ]
+      }
+    },
+    "/api/bookings/history/{id}": {
+      "get": {
+        "summary": "Get All Bookings History",
+        "description": "Can Get Bookings History, But Can not Edit and Delete",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
+        "responses": {
+          "200": {
+            "description": "Berhasil ditampilkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/coreBooking"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "tags": [
+          "Booking"
+        ]
+      }
+    },
+    "/api/admins/update-booking/{id}": {
+      "put": {
+        "summary": "Update Booking",
+        "description": "Update Booking",
+        "operationId": "updateBooking",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
+        "responses": {
+          "200": {
+            "description": "A successful response."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "isDone": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Booking"
+        ]
+      }
+    },
+    "/api/notifications": {
+      "get": {
+        "summary": "Get All Bookings Notification",
+        "description": "Can Get Bookings Notification, But Can not Edit and Delete",
         "security": [{
           "BearerTokenAuth": []
         }],
@@ -858,7 +973,13 @@
         "patientNIK": {
           "type": "string"
         },
+        "polyId": {
+          "type": "string"
+        },
         "examinationId": {
+          "type": "string"
+        },
+        "doctorId": {
           "type": "string"
         },
         "dateOfVisit": {
