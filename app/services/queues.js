@@ -1,8 +1,15 @@
 const queuesRepository = require("../repositories/queues");
 
 module.exports = {
-  create(requestBody) {
-    return queuesRepository.create(requestBody);
+ async create(requestBody) {
+    const queues = await queuesRepository.create(requestBody);
+    const queuesCount = await queuesRepository.getTotalQueues();
+
+    return {
+      data: queues,
+      count: queuesCount,
+    };
+    // return queuesRepository.create(requestBody);
   },
 
   update(id, requestBody) {
