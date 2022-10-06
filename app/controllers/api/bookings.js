@@ -1,7 +1,12 @@
+// const {
+//   Op
+// } = require("sequelize");
+const patientServices = require('../../services/patients');
 const queueServices = require('../../services/queues');
-const timeFormat = require ('../../utils/timeFormat');
+const timeFormat = require('../../utils/timeFormat');
 const {
-  Examinations
+  Examinations,
+  // Patients
 } = require('../../models');
 
 module.exports = {
@@ -72,7 +77,9 @@ module.exports = {
 
   async updateBookingPatient(req, res) {
     try {
-      const { isDone } = req.body;
+      const {
+        isDone
+      } = req.body;
       const update = await queueServices.update(req.params.bookingId, {
         isDone
       });
