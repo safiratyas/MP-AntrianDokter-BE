@@ -40,9 +40,7 @@ module.exports = {
         name: admin.name,
         email: admin.email,
         role: 'Admin',
-      }, process.env.JWT_PRIVATE_KEY || "Token", {
-        expiresIn: '1h'
-      });
+      }, process.env.JWT_PRIVATE_KEY || "Token");
 
       res.status(201).json({
         id: admin.id,

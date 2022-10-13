@@ -9,7 +9,7 @@ module.exports = {
       data: getAll
     });
   },
-  
+
   async getExaminations(req, res) {
     try {
       const examinations = await examinationsServices.getOne({
