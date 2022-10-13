@@ -799,9 +799,6 @@
         },
         "NIK": {
           "type": "string"
-        },
-        "phoneNumber": {
-          "type": "string"
         }
       }
     },
@@ -829,9 +826,6 @@
           "type": "string"
         },
         "NIK": {
-          "type": "string"
-        },
-        "phoneNumber": {
           "type": "string"
         },
         "createdAt": {
@@ -868,9 +862,6 @@
           "type": "string"
         },
         "NIK": {
-          "type": "string"
-        },
-        "phoneNumber": {
           "type": "string"
         },
         "createdAt": {
