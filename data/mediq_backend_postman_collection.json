@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"name\": \"Tulus\",\r\n    \"email\": \"sepatu@gmail.com\",\r\n    \"password\": \"tuluspalingkeren\",\r\n    \"dateOfBirth\": \"2000-10-22\",\r\n    \"address\": \"Jl. Jakarta\",\r\n    \"gender\": \"Pria\",\r\n    \"image\": null,\r\n    \"NIK\": \"31762212128198\",\r\n    \"phoneNumber\": \"082121283339\"\r\n}",
+							"raw": "{ \r\n    \"name\": \"Buggy\",\r\n    \"email\": \"clown@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"dateOfBirth\": \"2000-10-22\",\r\n    \"address\": \"Jl. East Blue\",\r\n    \"gender\": \"Pria\",\r\n    \"image\": null,\r\n    \"NIK\": \"31762212127198\",\r\n    \"phoneNumber\": \"0821202293238\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -46,7 +46,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"rezaalhady@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n    \"email\": \"gustigibayus@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,7 +76,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlJlemEgRmFobGV2aSBBbGhhZHkiLCJlbWFpbCI6InJlemFhbGhhZHlAZ21haWwuY29tIiwiaWF0IjoxNjYzNzY1OTQ0LCJleHAiOjE2NjM3Njk1NDR9.coJ1iXvwp7xPTzAe-_yD4ZApviWB2-Qc2OZ2wLMR3Nc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6IlZhbmVzaGEgUHJlc2NpbGxhIiwiZW1haWwiOiJ2YW5lc2hhcHJlc2NpbGxhQGdtYWlsLmNvbSIsInJvbGUiOiJQYXNpZW4iLCJpYXQiOjE2NjQ1NDQzMDQsImV4cCI6MTY2NDU0NzkwNH0.2VzBR0wwazfzsYcOqOaMIpzGpD2tcOFkWZ8-0pT7Rw0",
 								"type": "text"
 							}
 						],
@@ -164,7 +164,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IlRheWxvciBBbGlzb24gU3dpZnQiLCJlbWFpbCI6InN3aWZ0aWVzQGdtYWlsLmNvbSIsImlhdCI6MTY2MzY1OTEzOCwiZXhwIjoxNjYzNjYyNzM4fQ.roRmY06ioRpMyJkDFUwzMPWOzjrFGcjWYRQacW50EsI",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NDg5MTc0NiwiZXhwIjoxNjY0ODk1MzQ2fQ.LIMzNNFW1_9AWFMnM9CTJ3TUJAJIXL2arz3TStZ5Tnc",
 								"type": "text"
 							}
 						],
@@ -186,28 +186,20 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Admins Data",
-			"item": [
+				},
 				{
-					"name": "Register",
+					"name": "New Request",
 					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Siti Haryati\",\r\n    \"email\": \"haryati@gmail.com\",\r\n    \"password\": \"sitiharyati\",\r\n    \"gender\": \"Wanita\",\r\n    \"image\": null,\r\n    \"phoneNumber\": \"08122331390\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6IlR1bHVzIiwiZW1haWwiOiJzZXBhdHVAZ21haWwuY29tIiwicm9sZSI6IlBhc2llbiIsImlhdCI6MTY2NDc4ODEzMSwiZXhwIjoxNjY0NzkxNzMxfQ.xPy1HfGpx_yDo0T4QuYyzT1nq57ypDkMvoO2QWr30Pk",
+								"type": "text"
 							}
-						},
+						],
 						"url": {
-							"raw": "http://localhost:3000/api/admins/register",
+							"raw": "http://localhost:3000/api/patients/7/destroy",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -215,13 +207,19 @@
 							"port": "3000",
 							"path": [
 								"api",
-								"admins",
-								"register"
+								"patients",
+								"7",
+								"destroy"
 							]
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Admins Data",
+			"item": [
 				{
 					"name": "Login",
 					"request": {
@@ -259,7 +257,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsImlhdCI6MTY2Mzc2NzI1NCwiZXhwIjoxNjYzNzcwODU0fQ.I6j435VhavdgU1-bY606pCYIDdU1BrV7UzvlShKaMOw",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NDc4NTAwNSwiZXhwIjoxNjY0Nzg4NjA1fQ._qZGBRCLXwBffQbBjSGdcer9Lyy_vcgvSNIMzt161aE",
 								"type": "text"
 							}
 						],
@@ -274,43 +272,6 @@
 								"api",
 								"admins",
 								"who-am-i"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik1hZ3RoaWxkYSBTYW9kYSIsImVtYWlsIjoiaW5kZWtzYW9kYUBnbWFpbC5jb20iLCJpYXQiOjE2NjM2NzQ3NTAsImV4cCI6MTY2MzY3ODM1MH0.wRtJs82bnSs26xgJn01_6QL729uc4nBHR7KVVXirkPk",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Indek\",\r\n    \"image\": null,\r\n    \"phoneNumber\": \"082121233432\",\r\n    \"gender\": \"Wanita\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/admins/1/detail",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"admins",
-								"1",
-								"detail"
 							]
 						}
 					},
@@ -347,7 +308,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkluZGVrIiwiZW1haWwiOiJpbmRla3Nhb2RhQGdtYWlsLmNvbSIsImlhdCI6MTY2MzczMzE4OCwiZXhwIjoxNjYzNzM2Nzg4fQ.N77c4prvdH52NnKmdS8eeRCFjqdt6fJdxabz5LijDeY",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NDg4MTA0MywiZXhwIjoxNjY0ODg0NjQzfQ.vGf8xhNIwc2FyndHYbQE6mRQ05lF0IhZyOV3GUTsl8g",
 								"type": "text"
 							}
 						],
@@ -369,42 +330,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Update Boking",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2MzgyOTAwMywiZXhwIjoxNjYzODMyNjAzfQ.u4-xx1jnPKUZS4GFU0rX4V9k9SYA8S4ACKG8WnISSQs",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"isDone\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/api/admins/update-booking/3",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"admins",
-								"update-booking",
-								"3"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -418,13 +343,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlJlemEgRmFobGV2aSBBbGhhZHkiLCJlbWFpbCI6InJlemFhbGhhZHlAZ21haWwuY29tIiwicm9sZSI6IlBhc2llbiIsImlhdCI6MTY2NDE4ODEzNCwiZXhwIjoxNjY0MTkxNzM0fQ.XLpr0mRemiPgPn1ZFQ4zkERxdE69gmSfqXrK5RVMqCw",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6Ikd1c3RpIFJheWhhbiBHaWJheXVzIiwiZW1haWwiOiJndXN0aWdpYmF5dXNAZ21haWwuY29tIiwicm9sZSI6IlBhc2llbiIsImlhdCI6MTY2NTQ4ODMyOCwiZXhwIjoxNjY1NDkxOTI4fQ.SIV9duMrC4UxcxdqEsAZpJAI-ahD3vwonyIswBahY_0",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Alex Turner\",\r\n    \"patientNIK\": \"317553112812\",\r\n    \"examinationId\": 2\r\n}",
+							"raw": "{\r\n    \"name\": \"Namjoon\",\r\n    \"patientNIK\": \"37216599939\",\r\n    \"examinationId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -453,20 +378,161 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2Mzk5NTk5NCwiZXhwIjoxNjYzOTk5NTk0fQ.sJJJyKPXXTtHJ3KwlwnjQKRk48VPpsgNeI7Rqi2JWlU",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTQ4OTY5NiwiZXhwIjoxNjY1NDkzMjk2fQ.TDL037iqv_rblKulQ3Wn-UPiL95iNORmUHfFJe0M9Ek",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/api/patients/booking",
+							"raw": "localhost:3000/api/destroys/booking",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"patients",
+								"destroys",
 								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NDg5Mjg2NiwiZXhwIjoxNjY0ODk2NDY2fQ.qNJvQurYtYRRQVedi2G3jqW-cWth1DYJ3cBGQHQ_q4A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/bookings/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bookings",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Bookings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NDg5MjgwNSwiZXhwIjoxNjY0ODk2NDA1fQ.XyqUNKF6fTp98GQCtOVIznpxBX9BR-NJItY_euFSqSU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/bookings",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "History Patients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6IlZhbmVzaGEgUHJlc2NpbGxhIiwiZW1haWwiOiJ2YW5lc2hhcHJlc2NpbGxhQGdtYWlsLmNvbSIsInJvbGUiOiJQYXNpZW4iLCJpYXQiOjE2NjQ3ODI1MDQsImV4cCI6MTY2NDc4NjEwNH0.nMidXKSVTvqbIbLKbYyFAcVFbL4DorNhx9dACjCndZ8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/bookings/history/4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bookings",
+								"history",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Ticketing",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NDc4MjU1MywiZXhwIjoxNjY0Nzg2MTUzfQ.u6911WWob7mg4lkrf4ceWleVfmen6P9VlnrZwVzvdeI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isDone\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/admins/update-booking/5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admins",
+								"update-booking",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notifications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NDg4MTk2MiwiZXhwIjoxNjY0ODg1NTYyfQ.f38wZQLEVRqf7il8O8uHnoSzcYP0JNoXyVwCJKRw0hw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/notifications/patients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"notifications",
+								"patients"
 							]
 						}
 					},
@@ -475,56 +541,54 @@
 			]
 		},
 		{
-			"name": "Doctors Data",
+			"name": "Examinations",
 			"item": [
 				{
-					"name": "Doctor By ID",
+					"name": "All Examinations",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2Mzg1ODYzNSwiZXhwIjoxNjYzODYyMjM1fQ.3k10QZwXlVyBwm55RvuJRXnMhwZjLvR9RF8IMRDpxPI",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTAzNzc0NywiZXhwIjoxNjY1MDQxMzQ3fQ.joSDlBDlVuJ0Yd6oXeoBoswcJbHTetaRIfwegt5OmHo",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/api/doctors/1",
-							"protocol": "http",
+							"raw": "localhost:3000/api/examinations",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"doctors",
-								"1"
+								"examinations"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "All Doctors",
+					"name": "Examination By ID",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2Mzg1ODYzNSwiZXhwIjoxNjYzODYyMjM1fQ.3k10QZwXlVyBwm55RvuJRXnMhwZjLvR9RF8IMRDpxPI",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZ2dhIEFsZGkgWXVuYW5kYSIsImVtYWlsIjoiYW5nZ2F5dW5hbmRhQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTAzNzc0NywiZXhwIjoxNjY1MDQxMzQ3fQ.joSDlBDlVuJ0Yd6oXeoBoswcJbHTetaRIfwegt5OmHo",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/api/doctors",
-							"protocol": "http",
+							"raw": "localhost:3000/api/examinations/1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"doctors"
+								"examinations",
+								"1"
 							]
 						}
 					},

@@ -129,7 +129,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/corePatient"
+              "$ref": "#/definitions/coreUpdate"
             }
           },
           "default": {
@@ -166,9 +166,6 @@
                 "gender": {
                   "type": "string"
                 },
-                "image": {
-                  "type": "string"
-                },
                 "NIK": {
                   "type": "string"
                 },
@@ -199,7 +196,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "properties": {}
+              "$ref": "#/definitions/corePatientDetail"
             }
           },
           "default": {
@@ -446,7 +443,11 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "properties": {}
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
             }
           },
           "default": {
@@ -571,7 +572,10 @@
         }],
         "responses": {
           "200": {
-            "description": "A successful response."
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/coreUpdate"
+            }
           },
           "default": {
             "description": "An unexpected error response.",
@@ -760,8 +764,26 @@
     "coreLoginResponse": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
         "accessToken": {
           "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },
@@ -873,6 +895,48 @@
         }
       }
     },
+    "coreUpdate": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "format": "OK"
+        },
+        "message": {
+          "type": "string",
+          "format": "Pasien dengan ID telah berhasil diperbarui."
+        }
+      }
+    },
+    "coreAdmin": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
     "coreWhoAmIResponseAdmin": {
       "type": "object",
       "properties": {
@@ -922,38 +986,55 @@
     "coreResponseBooking": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "patientId": {
-          "type": "integer"
-        },
-        "patientName": {
-          "type": "string"
-        },
-        "patientNIK": {
-          "type": "string"
-        },
-        "examinationId": {
-          "type": "integer"
-        },
-        "dateOfVisit": {
-          "type": "string"
-        },
-        "isDone": {
-          "type": "string"
-        },
-        "queueNumber": {
-          "type": "integer"
-        },
-        "createdAt": {
+        "message": {
           "type": "string",
-          "format": "date-time"
+          "format": "Success"
         },
-        "updatedAt": {
-          "type": "string",
-          "format": "date-time"
+        "booking": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "patientId": {
+                  "type": "integer"
+                },
+                "patientName": {
+                  "type": "string"
+                },
+                "patientNIK": {
+                  "type": "string"
+                },
+                "examinationId": {
+                  "type": "integer"
+                },
+                "dateOfVisit": {
+                  "type": "string"
+                },
+                "isDone": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "queueNumber": {
+                  "type": "integer"
+                }
+              }
+            },
+            "count": {
+              "type": "integer"
+            }
+          }
         }
       }
     },
@@ -1024,7 +1105,7 @@
     "rpcStatus": {
       "type": "object",
       "properties": {
-        "code": {
+        "status": {
           "type": "integer",
           "format": "int32"
         },
