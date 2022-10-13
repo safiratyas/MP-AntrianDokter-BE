@@ -168,12 +168,6 @@
                 },
                 "NIK": {
                   "type": "string"
-                },
-                "BPJS": {
-                  "type": "string"
-                },
-                "phoneNumber": {
-                  "type": "string"
                 }
               }
             }
@@ -732,12 +726,6 @@
           "type": "string"
         },
         "NIK": {
-          "type": "string"
-        },
-        "BPJS": {
-          "type": "string"
-        },
-        "phoneNumber": {
           "type": "string"
         },
         "createdAt": {
