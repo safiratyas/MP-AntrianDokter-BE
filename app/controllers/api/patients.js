@@ -18,9 +18,7 @@ module.exports = {
         dateOfBirth: req.body.dateOfBirth,
         address: req.body.address,
         gender: req.body.gender,
-        BPJS: req.body.BPJS || null,
         NIK: req.body.NIK,
-        phoneNumber: req.body.phoneNumber,
       });
 
       res.status(201).json({
@@ -30,9 +28,7 @@ module.exports = {
         dateOfBirth: patient.dateOfBirth,
         address: patient.address,
         gender: patient.gender,
-        BPJS: patient.BPJS,
         NIK: patient.NIK,
-        phoneNumber: patient.phoneNumber,
         createdAt: patient.createdAt,
         updatedAt: patient.updatedAt
       })
@@ -103,9 +99,7 @@ module.exports = {
         dateOfBirth,
         address,
         gender,
-        NIK,
-        BPJS,
-        phoneNumber
+        NIK
       } = req.body;
 
       const id = req.params.id;
@@ -125,8 +119,6 @@ module.exports = {
         address,
         gender,
         NIK,
-        BPJS,
-        phoneNumber,
       });
 
       res.status(200).json({
@@ -193,9 +185,7 @@ module.exports = {
         dateOfBirth: req.patient.dateOfBirth,
         address: req.patient.address,
         gender: req.patient.gender,
-        BPJS: req.patient.BPJS,
         NIK: req.patient.NIK,
-        phoneNumber: req.patient.phoneNumber,
         createdAt: req.patient.createdAt,
         updatedAt: req.patient.updatedAt
       });

@@ -168,12 +168,6 @@
                 },
                 "NIK": {
                   "type": "string"
-                },
-                "BPJS": {
-                  "type": "string"
-                },
-                "phoneNumber": {
-                  "type": "string"
                 }
               }
             }
@@ -734,12 +728,6 @@
         "NIK": {
           "type": "string"
         },
-        "BPJS": {
-          "type": "string"
-        },
-        "phoneNumber": {
-          "type": "string"
-        },
         "createdAt": {
           "type": "string",
           "format": "date-time"
@@ -811,9 +799,6 @@
         },
         "NIK": {
           "type": "string"
-        },
-        "phoneNumber": {
-          "type": "string"
         }
       }
     },
@@ -841,9 +826,6 @@
           "type": "string"
         },
         "NIK": {
-          "type": "string"
-        },
-        "phoneNumber": {
           "type": "string"
         },
         "createdAt": {
@@ -880,9 +862,6 @@
           "type": "string"
         },
         "NIK": {
-          "type": "string"
-        },
-        "phoneNumber": {
           "type": "string"
         },
         "createdAt": {
