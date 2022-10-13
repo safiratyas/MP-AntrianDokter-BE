@@ -26,7 +26,6 @@ module.exports = {
       });
 
       const result = getBooking.map((notification) => {
-        console.log(notification);
         if (notification.isDone === true) {
           return ({
             msg: 'Tiket Telah Selesai Digunakan',
@@ -53,13 +52,12 @@ module.exports = {
       });
 
       res.status(200).json({
-        status: "success",
+        status: "Success",
         result
       });
     } catch (err) {
-      console.log(err);
       res.status(400).json({
-        status: "FAIL",
+        status: "Failed",
         message: err.message
       });
     }

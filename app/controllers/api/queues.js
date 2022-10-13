@@ -20,7 +20,7 @@ module.exports = {
         dateOfVisit: new Date(),
         isDone: false
       });
-      
+
       res.status(201).json({
         message: "Success",
         booking,

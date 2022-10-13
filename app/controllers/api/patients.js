@@ -78,9 +78,7 @@ module.exports = {
         name: patient.name,
         email: patient.email,
         role: 'Pasien',
-      }, process.env.JWT_PRIVATE_KEY || 'Token', {
-        expiresIn: '1h'
-      });
+      }, process.env.JWT_PRIVATE_KEY || 'Token');
 
       res.status(201).json({
         id: patient.id,
@@ -99,7 +97,6 @@ module.exports = {
   },
 
   async updateDetail(req, res) {
-    console.log(req.patient);
     try {
       const {
         name,

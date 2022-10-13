@@ -99,14 +99,6 @@ module.exports = {
       return;
     }
 
-    // if (gender === 'Pria' || gender === 'Wanita') {
-    //   res.status(201).json({
-    //     status: 'Failed',
-    //     message: 'Gender harus diisi sebagai Pria atau Wanita'
-    //   });
-    //   return
-    // }
-
     if (BPJS) {
       const uniqueBPJS = await patientServices.getOne({
         where: {

@@ -1,17 +1,11 @@
-// const {
-//   Op
-// } = require("sequelize");
-const patientServices = require('../../services/patients');
 const queueServices = require('../../services/queues');
 const timeFormat = require('../../utils/timeFormat');
 const {
-  Examinations,
-  // Patients
+  Examinations
 } = require('../../models');
 
 module.exports = {
   async historyBookings(req, res) {
-    console.log(req.body);
     try {
       const historyPatient = await queueServices.listByCondition({
         where: {
