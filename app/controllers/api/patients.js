@@ -74,7 +74,9 @@ module.exports = {
         name: patient.name,
         email: patient.email,
         role: 'Pasien',
-      }, process.env.JWT_PRIVATE_KEY || 'Token');
+      }, process.env.JWT_PRIVATE_KEY || 'Token', {
+        expiresIn: '2d'
+      });
 
       res.status(201).json({
         id: patient.id,

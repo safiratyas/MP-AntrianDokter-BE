@@ -22,7 +22,7 @@ module.exports = {
       });
 
       res.status(201).json({
-        message: "Success",
+        message: 'Berhasil Membuat Janji, Silahkan Cek Menu Antrian.',
         booking,
       });
     } catch (err) {
