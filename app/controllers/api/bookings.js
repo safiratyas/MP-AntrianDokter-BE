@@ -77,13 +77,14 @@ module.exports = {
       const {
         isDone
       } = req.body;
-      const update = await queueServices.update(req.params.bookingId, {
+
+      const update = await queueServices.update(req.params.id, {
         isDone
       });
 
       res.status(200).json({
         status: 'OK',
-        message: `Pasien dengan ID tiket ${req.params.bookingId} telah selesai.`,
+        message: `Pasien dengan ID tiket ${req.params.id} telah selesai.`,
       });
     } catch (err) {
       res.status(422).json({

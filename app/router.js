@@ -98,7 +98,7 @@ apiRouter.delete("/api/destroys/booking",
  * @Booking History 
  */
 
-apiRouter.put("/api/admins/update-booking/:bookingId",
+apiRouter.put("/api/admins/update-booking/:id",
   middlewares.adminAuthorization.authorize,
   controllers.api.bookings.updateBookingPatient
 );
