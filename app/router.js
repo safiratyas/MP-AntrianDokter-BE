@@ -108,6 +108,11 @@ apiRouter.get("/api/bookings/history/:id",
   controllers.api.bookings.historyBookings
 );
 
+apiRouter.get("/api/current-queues", 
+  middlewares.patientAuthorization.authorize || middlewares.adminAuthorization.authorize,
+  controllers.api.bookings.getCurrentQueue
+);
+
 /**
  * @Examinations Resources 
  */

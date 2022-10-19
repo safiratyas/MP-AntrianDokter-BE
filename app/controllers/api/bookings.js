@@ -3,11 +3,14 @@ const timeFormat = require('../../utils/timeFormat');
 const {
   Examinations
 } = require('../../models');
+const {
+  Op
+} = require("sequelize");
 
 module.exports = {
   async historyBookings(req, res) {
     try {
-      const historyPatient = await queueServices.listByCondition({
+      const historyPatient = await queueServices.list({
         where: {
           patientId: req.patient.id,
         },
@@ -16,7 +19,7 @@ module.exports = {
           as: 'examination',
         },
         order: [
-          ["id", "DESC"]
+          ['id', 'DESC']
         ]
       });
 
@@ -56,7 +59,7 @@ module.exports = {
       }
 
       res.status(200).json({
-        message: "Success",
+        message: 'Success',
         result,
       });
     } catch (err) {
@@ -87,6 +90,41 @@ module.exports = {
         error: err.name,
         message: err.message
       })
+    }
+  },
+
+  async getCurrentQueue(req, res) {
+    try {
+      const getBooking = await queueServices.list({
+        where: {
+          isDone: {
+            [Op.eq]: false
+          }
+        },
+        order: [
+          ['id', 'ASC']
+        ]
+      });
+
+      const count = getBooking.count
+      const result = getBooking.data.map((queue) => {
+        return ({
+          name: queue.patientName,
+          NIK: queue.patientNIK,
+          queue: queue.queueNumber,
+          count
+        });
+      });
+
+      res.status(200).json({
+        status: "Success",
+        result,
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: "Failed",
+        message: err.message
+      });
     }
   },
 }

@@ -24,8 +24,8 @@ module.exports = {
     return queuesRepository.deleteAll();
   },
 
-  async list() {
-    const queues = await queuesRepository.findAll();
+  async list(query) {
+    const queues = await queuesRepository.findAll(query);
     const queuesCount = await queuesRepository.getTotalQueues();
 
     return {
@@ -34,9 +34,9 @@ module.exports = {
     };
   },
 
-  async listByCondition(query) {
-    return queuesRepository.findAll(query)
-  },
+  // async listByCondition(query) {
+  //   return queuesRepository.findAll(query)
+  // },
 
   get(id) {
     return queuesRepository.find(id);

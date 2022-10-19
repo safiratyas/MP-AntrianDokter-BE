@@ -10,7 +10,7 @@ const {
 module.exports = {
   async getAllNotification(req, res) {
     try {
-      const getBooking = await queueServices.listByCondition({
+      const getBooking = await queueServices.list({
         where: {
           isDone: {
             [Op.or]: [true, false]
@@ -25,7 +25,7 @@ module.exports = {
         ]
       });
 
-      const result = getBooking.map((notification) => {
+      const result = getBooking.data.map((notification) => {
         if (notification.isDone === true) {
           return ({
             msg: 'Tiket Telah Selesai Digunakan',

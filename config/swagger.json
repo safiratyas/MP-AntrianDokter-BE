@@ -634,6 +634,36 @@
         ]
       }
     },
+    "/api/current-queues": {
+      "get": {
+        "summary": "Get Current Queues",
+        "description": "Can Get Queues, But Can not Edit and Delete",
+        "security": [{
+          "BearerTokenAuth": []
+        }],
+        "responses": {
+          "200": {
+            "description": "Berhasil ditampilkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/coreCurrentQueue"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Booking"
+        ]
+      }
+    },
     "/api/examinations": {
       "get": {
         "summary": "Get All Examinations",
@@ -1081,11 +1111,28 @@
         }
       }
     },
+    "coreCurrentQueue": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "NIK": {
+          "type": "string"
+        },
+        "queue": {
+          "type": "integer"
+        },
+        "count": {
+          "type": "integer"
+        }
+      }
+    },
     "rpcStatus": {
       "type": "object",
       "properties": {
         "status": {
-          "type": "integer",
+          "type": "string",
           "format": "int32"
         },
         "message": {

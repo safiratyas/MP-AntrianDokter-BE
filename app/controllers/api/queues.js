@@ -68,7 +68,11 @@ module.exports = {
   },
 
   async getAllQueues(req, res) {
-    const getAll = await queueServices.list();
+    const getAll = await queueServices.list({
+      order: [
+        ['id', 'ASC']
+      ]
+    });
 
     res.status(200).json({
       status: 'Success',
